@@ -1,4 +1,18 @@
 ---
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Ethan",
+  country: "United States",
+  occupation: "Engineering Student",
+  hobbies: ["Improv", "Making", "Yapping"]
+}
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -7,18 +21,37 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
-    <title>Astro</title>
+    <title>{pageTitle}</title>
   </head>
+
   <body>
-    +<a href="/">Home</a>
-    +<a href="/about/">About</a>
-    +<a href="/blog/">Blog</a>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
 
     <h1>My Astro Portfolio Site</h1>
-    <h1>About Me:</h1>
+    <h1>{pageTitle}</h1>
 
-    <p>I am writing gibberish to learn how to make my portfolio website</p>
+    <p>Here are a few fun facts about me:</p>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>I live in {identity.country} and I am currently an {identity.occupation}.</li>
+      
+      {identity.hobbies.length >= 2 &&
+        <li>Some of my hobbies include {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
+      }
+    </ul>
 
-    <p>I will apparently be updating this much more throughout the tutorial</p>
+    <p>My skills are:</p>
+
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
   </body>
 </html>
