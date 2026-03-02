@@ -1,12 +1,16 @@
 ---
-const platform = "github";
-const username = "wheat-than";
-const insta = "wheat_than";
-const linkedin = "ethan-gray-bb024423a";
+import Social from "./Social.astro";
 ---
+<style>
+	footer {
+		display: flex;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+</style>
 
 <footer>
-	<p>Learn more about my projects on <a href={`https://www.${platform}.com/${username}`}>{platform}</a>!</p>
-	<p>Follow me on Instagram <a href={`https://www.instagram.com/${insta}`}>@{insta}</a>!</p>
-	<p>Connect with me on linkedin <a href={`https://www.linkedin.com/in/${linkedin}`}>here</a>!</p>
+	<Social platform = "github" username = "wheat-than"/>
+	<Social platform = "instagram" username = "wheat_than"/>
+	<Social platform = "linkedin" username = "in/ethan-gray-bb024423a"/>
 </footer>
