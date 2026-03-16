@@ -21,7 +21,6 @@ html {
   }
   
   /* nav styles */
-
   .menu {
 	background-color: #0d0950;
 	border: none;
@@ -70,8 +69,10 @@ html {
 	  display: inline-block;
 	  padding: 15px 20px;
 	}
+
+	.menu {
+		display: none;
+	  }
   }
 
-  .menu {
-    display: none;
-  }
+  
