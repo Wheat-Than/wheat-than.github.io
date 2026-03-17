@@ -118,8 +118,8 @@ html.dark {
 #main-content {
 	opacity: 1; /* Keep visible by default to debug, then set to 0 later */
 	position: center;
-	width: 100%;
-	height: 100%;	
+	width: 100vw;
+	height: 100vw;	
 	/* This prevents the "zoom out" behavior */
 	overflow: hidden;
   }
@@ -152,11 +152,21 @@ html.dark {
   }
 
   .side-margins {
-	/* This creates your large gutters */
-	padding-left: 25%;  /* Space on the left */
-	padding-right: 25%; /* Space on the right */
-	
-	/* Keep content left-aligned within this padded area */
+	/* 1. Set the maximum width of your content column */
+	max-width: 1100px; 
+  
+	/* 2. This creates the "margins" by splitting remaining space equally */
+	margin-left: auto;
+	margin-right: auto;
+  
+	/* 3. Safety padding for mobile (so text doesn't touch the screen edge) */
+	padding-left: 20px;
+	padding-right: 20px;
+  
+	/* 4. Keep your existing left-justified look */
 	text-align: left;
-	display: block;
+	
+	/* Ensure the container doesn't grow beyond 100% on tiny screens */
+	width: 100%;
+	box-sizing: border-box;
   }
