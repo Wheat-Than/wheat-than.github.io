@@ -27,7 +27,7 @@ import introVideoAsset from '../videos/SMPTE Lead In 2.mp4';
     z-index: 9999;
     background: black;
     display: none; /* Hidden by default, shown via JS */
-    transition: opacity 1s ease-out;
+    transition: opacity 2s ease-out;
   }
 
   .intro-overlay.fade-out {
@@ -60,7 +60,7 @@ import introVideoAsset from '../videos/SMPTE Lead In 2.mp4';
       video.onended = completeIntro;
   
       video.ontimeupdate = () => {
-        if (video.duration - video.currentTime <= 0.5) {
+        if (video.duration - video.currentTime <= 0.3) {
           overlay.classList.add('fade-out');
         }
       };
