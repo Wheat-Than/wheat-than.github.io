@@ -15,12 +15,20 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <FilmGrain />
-    <Header />
-    <h1>{pageTitle}</h1>
-    <slot />
-    <Footer />
-    <script>
-      import "../scripts/menu.js";
-    </script>
+    <div id="main-content" class="site-content">
+      <div class="side-margins">
+        <Header />
+        <h1>{pageTitle}</h1>
+      
+        <main>
+          <slot />
+        </main>
+        
+        <Footer />
+        <script>
+          import "../scripts/menu.js";
+        </script>
+      </div>
+    </div>
   </body>
 </html>

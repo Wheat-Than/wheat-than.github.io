@@ -45,24 +45,43 @@ import introVideoAsset from '../videos/SMPTE Lead In 2.mp4';
 <script>
     const overlay = document.getElementById('intro-overlay');
     const video = document.getElementById('intro-video') as HTMLVideoElement;
+    const mainContent = document.getElementById('main-content');
     const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
   
-    // Check existence once
-    if (!hasSeenIntro && overlay && video) {
-      overlay.style.display = 'block';
+    if (hasSeenIntro) {
+      // REPEAT VISIT: Hide video, show site instantly
+      if (overlay) overlay.style.display = 'none';
+      if (mainContent) {
+        mainContent.style.opacity = '1';
+        mainContent.style.visibility = 'visible';
+      }
+    } else {
+      // FIRST VISIT: Run the cinematic sequence
+      if (video && overlay && mainContent) {
+        overlay.style.display = 'block';
   
-      // Move the "completion" logic inside this block
-      const completeIntro = () => {
-        overlay.style.display = 'none';
-        sessionStorage.setItem('hasSeenIntro', 'true');
-      };
+        // 1. Hand-off logic (When video finishes)
+        video.onended = () => {
+          overlay.style.display = 'none';
+          sessionStorage.setItem('hasSeenIntro', 'true');
   
-      video.onended = completeIntro;
+          // Trigger vertical jump physics
+          document.body.classList.add('lock-scroll');
+          mainContent.classList.add('film-frame-up');
   
-      video.ontimeupdate = () => {
-        if (video.duration - video.currentTime <= 0.3) {
-          overlay.classList.add('fade-out');
-        }
-      };
+          // Cleanup after 1s animation
+          setTimeout(() => {
+            document.body.classList.remove('lock-scroll');
+            mainContent.style.overflow = 'visible';
+          }, 1000);
+        };
+  
+        // 2. Optional: Subtle fade out just before video ends
+        video.ontimeupdate = () => {
+          if (video.duration - video.currentTime <= 0.2) {
+            overlay.classList.add('fade-out');
+          }
+        };
+      }
     }
-</script>
+  </script>
