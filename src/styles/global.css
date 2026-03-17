@@ -1,5 +1,5 @@
 html {
-	background-color: #f1f5f9;
+	background-color: #d7d7d7;
 	font-family: sans-serif;
   }
   
@@ -24,7 +24,7 @@ html {
   .menu {
 	background-color: #0d0950;
 	border: none;
-	color: #fff;
+	color: #d7d7d7;
 	font-size: 1.2rem;
 	font-weight: bold;
 	padding: 5px 10px;
@@ -76,22 +76,22 @@ html {
   }
 
 html.dark {
-	background-color: #0d0950;
-	color: #fff;
+	background-color: #000000;
+	color: #d7d7d7;
 }
   
 .dark .menu {
-	background-color: #fff;
+	background-color: #d7d7d7;
 	color: #000;
 }
   
 .dark .nav-links a:hover,
 .dark .nav-links a:focus {
-	color: #0d0950;
+	color: #000;
 }
   
 .dark .nav-links a {
-	color: #fff;
+	color: #d7d7d7;
 }
   
 .dark a {
