@@ -1,11 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting';
 import Intro from '../components/Intro.astro';
 const pageTitle = "Home Page";
 ---
 <BaseLayout pageTitle={pageTitle}>
   <h2>My awesome blog subtitle</h2>
   <Intro src="src/videos/SMPTE Lead In 2.mp4" />
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </BaseLayout>
