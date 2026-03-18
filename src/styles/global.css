@@ -121,7 +121,6 @@ html.dark {
 	flex-direction: column; 
 	align-items: center;   /* THIS is what splits the screen evenly */
 	padding-top: 20px;     /* Your top gap */
-	min-height: 100vh;
   }
   
   .side-margins {
@@ -129,9 +128,8 @@ html.dark {
 	max-width: 800px;
 	/* margin: auto is no longer strictly needed if parent is 'align-items: center' */
 	box-sizing: border-box;
+	padding: 0 20px;       /* Mobile safety */
 	text-align: left;      /* Content stays left-justified inside the column */
-	padding-top: env(safe-area-inset-top, 20px); 
-  	padding-bottom: env(safe-area-inset-bottom, 20px);
   }
 
   body.lock-scroll {
@@ -160,13 +158,3 @@ html.dark {
 	  filter: blur(0) brightness(1);
 	}
   }
-
-  	/* Light Mode Background */
-	html {
-		background-color: #d7d7d7;
-	}
-	
-	/* Dark Mode Background */
-	html.dark {
-		background-color: #000000;
-	}
