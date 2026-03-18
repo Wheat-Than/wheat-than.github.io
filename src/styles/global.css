@@ -128,7 +128,8 @@ html.dark {
 	max-width: 800px;
 	/* margin: auto is no longer strictly needed if parent is 'align-items: center' */
 	box-sizing: border-box;
-	padding: 0 20px;       /* Mobile safety */
+	padding-top: env(safe-area-inset-top, 20px); 
+  	padding-bottom: env(safe-area-inset-bottom, 20px);
 	text-align: left;      /* Content stays left-justified inside the column */
   }
 
