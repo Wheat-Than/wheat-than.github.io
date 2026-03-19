@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://ethangrayengineer.netlify.app/",
+  site: "https://wheat-than.github.io",
+  base: '/',
 });
