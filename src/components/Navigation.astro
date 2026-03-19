@@ -1,8 +1,19 @@
 ---
+import ThemeIcon from "./ThemeIcon.astro";
 ---
 <div id="main-menu" class="nav-links">
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/blog/">Blog</a>
     <a href="/tags/">Tags</a>
+    <ThemeIcon /> 
 </div>
+
+<style>
+    div {
+        justify-content: right;
+        align-items: center;
+        width: 100%;
+        font-family: 'Courier New', Courier, monospace;
+    }
+</style>

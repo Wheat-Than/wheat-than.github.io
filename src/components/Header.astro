@@ -4,18 +4,50 @@ import Menu from "./Menu.astro";
 import ThemeIcon from "./ThemeIcon.astro";
 ---
 <header>
-	<nav>
-		<div>
-			<ThemeIcon />
-			<Menu />
-		</div>
-		<Navigation />
-	</nav>
+    <nav class="nav-container">
+        <a href="/" class="name">Ethan Gray</a>
+
+        <div class="right-group">
+            <Menu /> 
+            <Navigation />
+        </div>
+    </nav>
 </header>
 
 <style>
-	div {
+	header {
+		width: 100%;
+		/* This ensures the header exists in the same center-column as the site */
 		display: flex;
-		justify-content: space-between;
+		justify-content: center; 
 	}
+	
+	.nav-container {
+        display: flex;
+		justify-content: space-between; /* Pushes Name far left, Group far right */
+		align-items: center;
+		width: 100%;
+		max-width: 800px; /* Must match your .side-margins exactly */
+		height: 50px;
+    }
+
+    .name {
+        text-decoration: none;
+		justify-content: left;
+        color: inherit; /* Matches your current text color */
+        font-size: 2.1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+		font-family: 'Courier New', Courier, monospace;
+		white-space: nowrap;
+    }
+
+    .right-group {
+        display: flex;
+        align-items: right;
+        gap: 20px; /* Space between links and the Moon icon */
+		position: relative;
+	}
+
 </style>
