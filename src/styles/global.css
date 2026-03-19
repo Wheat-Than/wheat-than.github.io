@@ -97,7 +97,7 @@ html {
 
     /* --- THE GLASS LOOK --- */
     /* Lowering 0.7 to 0.4 makes it more "glass" and less "plastic" */
-    background-color: rgba(215, 215, 215, 0.4); 
+    background-color: rgba(215, 215, 215, 0.7); 
     
     /* Stronger blur for that frosted effect */
     backdrop-filter: blur(12px); 
