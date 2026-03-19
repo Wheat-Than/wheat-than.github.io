@@ -58,52 +58,51 @@ html {
 	  position: relative; /* CRITICAL: Anchors the dropdown to this container's right edge */
   }
   
-  /* --- 4. MOBILE NAVIGATION (GLASSMORPHISM) --- */
-  .nav-links {
+  /* --- 4. MOBILE NAVIGATION (HEAVY GLASS UPGRADE) --- */
+.nav-links {
 	display: flex; 
-	visibility: hidden; /* Menu is hidden by default */
-	opacity: 0;         /* Menu is transparent by default */
+	visibility: hidden;
+	opacity: 0;
 	flex-direction: column;
 	align-items: center;
 	
 	position: absolute;
 	top: 100%; 
-	right: 0;           /* Aligns dropdown to the right of the button */
-	width: 200px;
+	right: 0; 
+	width: 220px; /* Slightly wider for better text fit */
 	padding: 15px 0;
 	z-index: 1000;
   
 	/* =============================================
-	   GLASSMORPHISM CONTROL CENTER (Light Mode)
+	   GLASSMORPHISM UPGRADE (iPhone Optimized)
 	   ============================================= */
 	
-	/* 1. OPACITY: Change the '0.5' to make it more or less see-through */
-	background-color: rgba(215, 215, 215, 0.5); 
+	/* 1. OPACITY: Bumped to 0.85 (85% solid) for much less transparency */
+	background-color: rgba(215, 215, 215, 0.85); 
 	
-	/* 2. BLUR: Increase '20px' to make the background more "frosted" */
-	backdrop-filter: blur(50px); 
-	-webkit-backdrop-filter: blur(50px); 
+	/* 2. BLUR & SATURATE: 
+	   - 40px blur for heavy frosting.
+	   - saturate(180%) makes colors behind the glass "pop" while staying blurry. */
+	backdrop-filter: blur(40px) saturate(180%); 
+	-webkit-backdrop-filter: blur(40px) saturate(180%); 
   
-	/* 3. EDGES: Adjust the '0.3' for a sharper or softer glass border */
-	border: 1.5px solid rgba(20, 20, 20, 0.1);
-	
-	/* 4. SHADOW: Controls the "floating" depth effect */
-	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+	/* 3. EDGES: Darker border to define the shape against light backgrounds */
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
 	border-radius: 8px;
   
-	/* --- ANIMATION --- */
-	transform: translateY(-10px); /* Starts slightly tucked behind header */
+	transform: translateY(-10px); 
 	transition: 
 	  opacity 0.3s ease, 
 	  transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
 	  visibility 0.3s;
   }
   
-  /* Glass Effect - Dark Mode Controls */
+  /* Heavy Glass - Dark Mode Controls */
   html.dark .nav-links {
-	  /* Change '0.6' to adjust dark mode transparency */
-	  background-color: rgba(0, 0, 0, 0.7); 
-	  border: 1.5px solid rgba(215, 215, 215, 0.1);
+	  /* Deep dark gray at 0.9 opacity for a premium "obsidian" look */
+	  background-color: rgba(20, 20, 20, 0.9); 
+	  border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   /* The "Open" State (Triggered by JS toggle) */
