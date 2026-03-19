@@ -1,15 +1,21 @@
+/* --- 1. CORE RESET & BASE --- */
 html {
-	background-color: #d7d7d7;
+	background-color: #d7d7d7; /* Your light mode background */
 	font-family: sans-serif;
+	transition: background-color 0.3s ease;
+  }
+  
+  html.dark {
+	background-color: #000000; /* Your dark mode background */
+	color: #d7d7d7;
   }
   
   body {
-	margin: 0; /* Changed from '0 auto' to just 0 */
+	margin: 0;
 	width: 100%;
-	padding: 0; /* Removed padding to prevent video/layout shift */
+	padding: 0;
 	line-height: 1.5;
 	overflow-x: hidden; 
-	/* Note: Remove overflow-y: hidden; here or your site won't scroll! */
 	font-family: Arial, Helvetica, sans-serif;
   }
   
@@ -23,26 +29,78 @@ html {
 	font-family: 'Courier New', Courier, monospace;
   }
   
-  /* --- Navigation Dropdown Fixes --- */
-
-.menu {
-	background-color: #161616;
+  /* --- 2. THE MENU BUTTON --- */
+  .menu {
+	background-color: #161616; /* Your light mode button */
 	border: none;
 	color: #d7d7d7;
 	font-size: 1.2rem;
 	font-weight: bold;
-	padding: 10px 10px;
+	padding: 10px;
 	cursor: pointer;
 	width: 100px;
 	font-family: 'Courier New', Courier, monospace;
 	letter-spacing: 1px;
-	border-radius: 10px;
+	border-radius: 5px;
+	z-index: 1001;
   }
   
+  .dark .menu {
+	background-color: #d7d7d7; /* Your dark mode button */
+	color: #000;
+  }
   
-  /* Dark mode adjustment for the dropdown background */
+  /* --- 3. THE ANCHOR --- */
+  .right-group {
+	  display: flex;
+	  align-items: center;
+	  gap: 20px;
+	  position: relative; /* This keeps the dropdown aligned with the button */
+  }
+  
+  /* --- 4. MOBILE NAVIGATION (GLASS LOOK) --- */
+  .nav-links {
+	display: flex; 
+	visibility: hidden;
+	opacity: 0;
+	flex-direction: column;
+	align-items: center;
+	
+	position: absolute;
+	top: 100%; 
+	right: 0; 
+	width: 200px;
+	padding: 15px 0;
+	z-index: 1000;
+  
+	/* Glass Effect - Light Mode */
+	background-color: rgba(215, 215, 215, 0.5); /* Using #d7d7d7 at 50% opacity */
+	backdrop-filter: blur(20px); 
+	-webkit-backdrop-filter: blur(20px); 
+  
+	border: 1px solid rgba(215, 215, 215, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+  
+	/* Animation */
+	transform: translateY(-10px); 
+	transition: 
+	  opacity 0.3s ease, 
+	  transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+	  visibility 0.3s;
+  }
+  
+  /* Glass Effect - Dark Mode */
   html.dark .nav-links {
-	background-color: #000000;
+	  background-color: rgba(0, 0, 0, 0.6); /* Using #000000 at 60% opacity */
+	  border: 1px solid rgba(215, 215, 215, 0.1);
+  }
+  
+  /* The "Open" State */
+  .right-group:has(.menu[aria-expanded="true"]) .nav-links {
+	visibility: visible;
+	opacity: 1;
+	transform: translateY(10px);
   }
   
   .nav-links a {
@@ -52,20 +110,85 @@ html {
 	font-size: 1.3rem;
 	font-weight: bolder;
 	text-transform: uppercase;
-	color: #000;
-	display: block; /* Changed from 'none' so they show when parent shows */
+	color: #000; /* Dark text for light glass */
+	display: block;
 	width: 100%;
   }
   
-  /* Desktop Reset (800px+) */
+  html.dark .nav-links a {
+	color: #d7d7d7; /* Light text for dark glass */
+  }
+  
+  .nav-links a:hover,
+  .nav-links a:focus {
+	background-color: #ff9776; /* Your accent color */
+	color: #000;
+  }
+  
+  /* --- 5. LAYOUT & CONTENT --- */
+  #main-content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20px;
+  }
+  
+  .side-margins {
+	width: 100%;
+	max-width: 800px;
+	box-sizing: border-box;
+	padding: 20px;
+	text-align: left;
+  }
+  
+  .dark a {
+	  color: #ff9776; /* Your dark mode link color */
+  }
+  
+  /* --- 6. FILM ANIMATIONS --- */
+  .film-snap-reveal {
+	animation: light-kick 0.8s ease-out forwards;
+  }
+  
+  @keyframes light-kick {
+	0% { filter: brightness(0) contrast(150%) blur(5px); transform: scale(1.01); }
+	100% { filter: brightness(1) contrast(100%) blur(0); transform: scale(1); }
+  }
+  
+  .film-frame-up {
+	opacity: 1 !important;
+	animation: catch-framerate 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  @keyframes catch-framerate {
+	0% { transform: translate3d(0, -12.5vh, 0); filter: blur(8px) brightness(2); }
+	50% { transform: translate3d(0, +5.5vh, 0); filter: blur(8px) brightness(2); }
+	100% { transform: translate3d(0, 0, 0); filter: blur(0) brightness(1); }
+  }
+  
+  body.lock-scroll {
+	overflow: hidden !important; 
+  }
+  
+  /* --- 7. DESKTOP RESET (The Fix) --- */
   @media screen and (min-width: 800px) {
+	.menu {
+	  display: none;
+	}
+  
 	.nav-links {
-	  display: flex;
-	  flex-direction: row;
+	  display: flex !important; 
+	  visibility: visible !important;
+	  opacity: 1 !important;
+	  transform: none !important;
 	  position: static;
 	  width: auto;
-	  background: none;
-	  margin: 0;
+	  background: none !important; /* Removes glass background on desktop */
+	  backdrop-filter: none !important;
+	  border: none !important;
+	  box-shadow: none !important;
+	  flex-direction: row;
 	  padding: 0;
 	}
   
@@ -74,144 +197,6 @@ html {
 	  width: auto;
 	  padding: 15px 20px;
 	  color: inherit;
-	}
-  
-	.menu {
-	  display: none;
-	}
-  }
-  
-  .nav-links {
-    display: flex; 
-    visibility: hidden;
-    opacity: 0;
-    flex-direction: column;
-    align-items: center;
-    
-    position: absolute;
-    top: 100%; 
-    right: 0; 
-    width: 200px;
-    padding: 10px 0;
-    z-index: 1000;
-
-    /* --- THE GLASS LOOK --- */
-    /* Lowering 0.7 to 0.4 makes it more "glass" and less "plastic" */
-    background-color: rgba(215, 215, 215, 0.7); 
-    
-    /* Stronger blur for that frosted effect */
-    backdrop-filter: blur(5rem); 
-    -webkit-backdrop-filter: blur(5rem); 
-
-    /* White border with low opacity creates the "edge of the glass" look */
-    border: 1.5px solid rgba(215, 215, 215, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-    border-radius: 5px; /* Slight rounding helps the glass feel "cut" */
-
-    /* --- ANIMATION SETTINGS --- */
-    transform: translateY(-10px); 
-    transition: 
-        opacity 0.3s ease, 
-        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-        visibility 0.3s;
-}
-
-/* Dark Mode Glass */
-html.dark .nav-links {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* The "Open" State */
-.right-group:has(.menu[aria-expanded="true"]) .nav-links {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(10px); /* Slides down into position */
-	width: 100px;
-}
-
-  .nav-links a:hover,
-  .nav-links a:focus {
-	background-color: #ff9776;
-  } 
-
-html.dark {
-	background-color: #000000;
-	color: #d7d7d7;
-}
-  
-.dark .menu {
-	background-color: #d7d7d7;
-	color: #000;
-}
-  
-.dark .nav-links a:hover,
-.dark .nav-links a:focus {
-	color: #000;
-}
-  
-.dark .nav-links a {
-	color: #d7d7d7;
-}
-  
-.dark a {
-	color: #ff9776;
-}
-
-.film-snap-reveal {
-	animation: light-kick 0.8s ease-out forwards;
-}
-  
-@keyframes light-kick {
-	0% { 
-	  filter: brightness(0) contrast(150%) blur(5px);
-	  transform: scale(1.01); /* Slight lens zoom effect */
-	}
-	100% { 
-	  filter: brightness(1) contrast(100%) blur(0);
-	  transform: scale(1);
-	}
-}
-
-#main-content {
-	width: 100%;
-	display: flex;         /* Maintain flex to control the child */
-	flex-direction: column; 
-	align-items: center;   /* THIS is what splits the screen evenly */
-	padding-top: 20px;     /* Your top gap */
-  }
-  
-  .side-margins {
-	width: 100%;
-	max-width: 800px;
-	/* margin: auto is no longer strictly needed if parent is 'align-items: center' */
-	box-sizing: border-box;
-	padding: 20px 20px;       /* Mobile safety */
-	text-align: left;      /* Content stays left-justified inside the column */
-  }
-
-  body.lock-scroll {
-	/* Completely removes the scrollbar during the animation */
-	overflow: hidden !important; 
-  }
-  
-  .film-frame-up {
-	opacity: 1 !important;
-	/* Using 'fixed' for the duration of the animation can stop the zoom */
-	animation: catch-framerate 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  
-  @keyframes catch-framerate {
-	0% {
-	  /* translate3d(x, y, z) - keeps X at 0 so it stays centered */
-	  transform: translate3d(0, -12.5vh, 0);
-	  filter: blur(8px) brightness(2);
-	}
-	50% {
-		transform: translate3d(0, +5.5vh, 0);
-	  filter: blur(8px) brightness(2);
-	}
-	100% {
-	  transform: translate3d(0, 0, 0);
-	  filter: blur(0) brightness(1);
+	  font-size: 1.1rem;
 	}
   }
