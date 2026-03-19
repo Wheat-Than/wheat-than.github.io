@@ -100,8 +100,8 @@ html {
     background-color: rgba(215, 215, 215, 0.7); 
     
     /* Stronger blur for that frosted effect */
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px); 
+    backdrop-filter: blur(5rem); 
+    -webkit-backdrop-filter: blur(5rem); 
 
     /* White border with low opacity creates the "edge of the glass" look */
     border: 1.5px solid rgba(215, 215, 215, 0.3);
@@ -118,7 +118,7 @@ html {
 
 /* Dark Mode Glass */
 html.dark .nav-links {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* The "Open" State */
