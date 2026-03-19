@@ -1,12 +1,12 @@
 /* --- 1. CORE RESET & BASE --- */
 html {
-	background-color: #d7d7d7; /* Your light mode background */
+	background-color: #d7d7d7; 
 	font-family: sans-serif;
 	transition: background-color 0.3s ease;
   }
   
   html.dark {
-	background-color: #000000; /* Your dark mode background */
+	background-color: #000000; 
 	color: #d7d7d7;
   }
   
@@ -31,7 +31,7 @@ html {
   
   /* --- 2. THE MENU BUTTON --- */
   .menu {
-	background-color: #161616; /* Your light mode button */
+	background-color: #161616; 
 	border: none;
 	color: #d7d7d7;
 	font-size: 1.2rem;
@@ -42,11 +42,11 @@ html {
 	font-family: 'Courier New', Courier, monospace;
 	letter-spacing: 1px;
 	border-radius: 5px;
-	z-index: 1001;
+	z-index: 1001; /* Keeps button above the dropdown */
   }
   
   .dark .menu {
-	background-color: #d7d7d7; /* Your dark mode button */
+	background-color: #d7d7d7; 
 	color: #000;
   }
   
@@ -55,52 +55,62 @@ html {
 	  display: flex;
 	  align-items: center;
 	  gap: 20px;
-	  position: relative; /* This keeps the dropdown aligned with the button */
+	  position: relative; /* CRITICAL: Anchors the dropdown to this container's right edge */
   }
   
-  /* --- 4. MOBILE NAVIGATION (GLASS LOOK) --- */
+  /* --- 4. MOBILE NAVIGATION (GLASSMORPHISM) --- */
   .nav-links {
 	display: flex; 
-	visibility: hidden;
-	opacity: 0;
+	visibility: hidden; /* Menu is hidden by default */
+	opacity: 0;         /* Menu is transparent by default */
 	flex-direction: column;
 	align-items: center;
 	
 	position: absolute;
 	top: 100%; 
-	right: 0; 
+	right: 0;           /* Aligns dropdown to the right of the button */
 	width: 200px;
 	padding: 15px 0;
 	z-index: 1000;
   
-	/* Glass Effect - Light Mode */
-	background-color: rgba(215, 215, 215, 0.5); /* Using #d7d7d7 at 50% opacity */
-	backdrop-filter: blur(20px); 
-	-webkit-backdrop-filter: blur(20px); 
+	/* =============================================
+	   GLASSMORPHISM CONTROL CENTER (Light Mode)
+	   ============================================= */
+	
+	/* 1. OPACITY: Change the '0.5' to make it more or less see-through */
+	background-color: rgba(215, 215, 215, 0.5); 
+	
+	/* 2. BLUR: Increase '20px' to make the background more "frosted" */
+	backdrop-filter: blur(50px); 
+	-webkit-backdrop-filter: blur(50px); 
   
-	border: 1px solid rgba(215, 215, 215, 0.3);
+	/* 3. EDGES: Adjust the '0.3' for a sharper or softer glass border */
+	border: 1.5px solid rgba(20, 20, 20, 0.1);
+	
+	/* 4. SHADOW: Controls the "floating" depth effect */
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
-	border-radius: 5px;
+	border-radius: 8px;
   
-	/* Animation */
-	transform: translateY(-10px); 
+	/* --- ANIMATION --- */
+	transform: translateY(-10px); /* Starts slightly tucked behind header */
 	transition: 
 	  opacity 0.3s ease, 
 	  transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
 	  visibility 0.3s;
   }
   
-  /* Glass Effect - Dark Mode */
+  /* Glass Effect - Dark Mode Controls */
   html.dark .nav-links {
-	  background-color: rgba(0, 0, 0, 0.6); /* Using #000000 at 60% opacity */
-	  border: 1px solid rgba(215, 215, 215, 0.1);
+	  /* Change '0.6' to adjust dark mode transparency */
+	  background-color: rgba(0, 0, 0, 0.7); 
+	  border: 1.5px solid rgba(215, 215, 215, 0.1);
   }
   
-  /* The "Open" State */
+  /* The "Open" State (Triggered by JS toggle) */
   .right-group:has(.menu[aria-expanded="true"]) .nav-links {
 	visibility: visible;
 	opacity: 1;
-	transform: translateY(10px);
+	transform: translateY(10px); /* Slides the glass down into view */
   }
   
   .nav-links a {
@@ -110,18 +120,18 @@ html {
 	font-size: 1.3rem;
 	font-weight: bolder;
 	text-transform: uppercase;
-	color: #000; /* Dark text for light glass */
+	color: #000; /* Text color inside light glass */
 	display: block;
 	width: 100%;
   }
   
   html.dark .nav-links a {
-	color: #d7d7d7; /* Light text for dark glass */
+	color: #d7d7d7; /* Text color inside dark glass */
   }
   
   .nav-links a:hover,
   .nav-links a:focus {
-	background-color: #ff9776; /* Your accent color */
+	background-color: #ff9776; 
 	color: #000;
   }
   
@@ -143,10 +153,10 @@ html {
   }
   
   .dark a {
-	  color: #ff9776; /* Your dark mode link color */
+	  color: #ff9776; 
   }
   
-  /* --- 6. FILM ANIMATIONS --- */
+  /* --- 6. FILM ANIMATIONS (Light Kick / Frame Up) --- */
   .film-snap-reveal {
 	animation: light-kick 0.8s ease-out forwards;
   }
@@ -171,20 +181,21 @@ html {
 	overflow: hidden !important; 
   }
   
-  /* --- 7. DESKTOP RESET (The Fix) --- */
+  /* --- 7. DESKTOP RESET (Widths 800px+) --- */
   @media screen and (min-width: 800px) {
 	.menu {
-	  display: none;
+	  display: none; /* Hide toggle button on desktop */
 	}
   
 	.nav-links {
+	  /* Resets mobile 'Glass' behavior for a standard horizontal menu */
 	  display: flex !important; 
 	  visibility: visible !important;
 	  opacity: 1 !important;
 	  transform: none !important;
 	  position: static;
 	  width: auto;
-	  background: none !important; /* Removes glass background on desktop */
+	  background: none !important; 
 	  backdrop-filter: none !important;
 	  border: none !important;
 	  box-shadow: none !important;
