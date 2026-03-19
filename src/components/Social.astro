@@ -1,13 +1,39 @@
 ---
 const { platform, username } = Astro.props;
 ---
+
 <a href={`https://www.${platform}.com/${username}`}>{platform}</a>
 
 <style>
     a {
         padding: 0.5rem 1rem;
-        color: white;
-        background-color: #4c1d95;
+        color: #000; /* Default light mode text */
+        border-radius: 8px;
         text-decoration: none;
+        font-family: 'Courier New', Courier, monospace;
+        text-transform: capitalize;
+        font-weight: 900;
+        /* Smoothly fades the color and background in/out */
+        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* LIGHT MODE HOVER */
+    a:hover, a:focus {
+        background-color: #c2c2c2; /* Your accent orange */
+        color: #000;
+        box-shadow: 0 0 15px rgba(220, 82, 9, 0.4); /* Subtle glow */
+    }
+
+    /* DARK MODE BASE */
+    :global(.dark) a {
+        color: #d7d7d7; /* Your light grey text */
+    }
+
+    /* DARK MODE HOVER */
+    :global(.dark) a:hover, 
+    :global(.dark) a:focus {
+        background-color: #b7b7b7;
+        color: #000; /* Dark text on the bright orange background */
+        box-shadow: 0 0 20px rgba(220, 82, 9, 0.6); /* Stronger glow for dark mode */
     }
 </style>

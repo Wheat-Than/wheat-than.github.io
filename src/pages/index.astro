@@ -1,12 +1,103 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Intro from '../components/Intro.astro';
-const pageTitle = "Home Page";
+import { Image } from 'astro:assets';
+import coverPhoto from '../assets/Diagon_Headshot.jpg';
+const pageTitle = null;
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <Intro src="src/videos/SMPTE Lead In 2.mp4" />
-  <body>
-    I am writing this because I can. Blah blah blah blah bleep bleep bloop
-  </body>
+  <Intro src="/videos/SMPTE Lead In 2.mp4" />
+
+  <div id="main-content" class="film-snap-reveal">
+    <section class="side-margins bio-container">
+      
+      <div class="bio-text">
+        <h2 class="greeting">Hi there!</h2>
+        
+        <p class="intro-paragraph">
+          My name is <strong>Ethan Gray</strong>. I'm a senior at Purdue University studying 
+          <strong>Multidisciplinary Engineering</strong> with a concentration in <strong>Theatre Engineering</strong>.
+        </p>
+
+        <p>
+          I'm pursuing a career in design engineering for the entertainment industry. 
+          At Purdue, I've developed hands-on skills which I've applied directly to the 
+          intersection of technology and the arts. I'm looking to utilize my love for 
+          storytelling, collaboration, and creativity to develop new scales of 
+          immersive and interactive experiences.
+        </p>
+      </div>
+
+      <div class="bio-image">
+        <Image 
+          src={coverPhoto} 
+          alt="Ethan Gray Headshot" 
+          class="headshot"
+          width="400" 
+          height="400" 
+        />
+      </div>
+
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  /* --- 1. THE TEXT RESET --- */
+  /* This kills the default browser padding/margins on all text blocks */
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* This adds spacing ONLY between two paragraphs, keeping the 
+     top and bottom of the whole block perfectly flush */
+  p + p {
+    margin-top: 1.5rem;
+  }
+
+  .bio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .greeting {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    /* Resetting the H2 margin to align perfectly with the top of the image */
+    margin: 0 0 1rem 0; 
+    color: #dc5209; /* Your burnt orange accent */
+  }
+
+  .intro-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .headshot {
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    filter: sepia(0.2) contrast(1.1);
+    display: block; /* Removes the tiny gap browsers put under images */
+  }
+
+  /* --- 2. DESKTOP ALIGNMENT --- */
+  @media screen and (min-width: 800px) {
+    .bio-container {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .bio-text {
+      flex: 1;
+    }
+
+    .bio-image {
+      flex: 0 0 300px;
+    }
+  }
+</style>

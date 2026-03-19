@@ -28,6 +28,12 @@ html {
 	font-size: 2.5rem;
 	font-family: 'Courier New', Courier, monospace;
   }
+
+  h2 {
+	margin: 1rem 0;
+	font-size: 1.75rem;
+	font-family: Arial, Helvetica, sans-serif;
+  }
   
   /* --- 2. THE MENU BUTTON --- */
   .menu {
@@ -122,6 +128,8 @@ html {
 	color: #000; /* Text color inside light glass */
 	display: block;
 	width: 100%;
+	transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+	border-radius: 8px;
   }
   
   html.dark .nav-links a {
@@ -130,10 +138,18 @@ html {
   
   .nav-links a:hover,
   .nav-links a:focus {
-	background-color: #ff9776; 
-	color: #000;
+	background-color: #c2c2c2; /* Your accent orange */
+    color: #000;
+    box-shadow: 0 0 15px rgba(220, 82, 9, 0.6); /* Subtle glow */
   }
-  
+
+html.dark .nav-links a:hover, 
+html.dark .nav-links a:focus {
+	background-color: #b7b7b7;
+	color: #000; /* Dark text on the bright orange background */
+	box-shadow: 0 0 20px rgba(220, 82, 9, 0.6); /* Stronger glow for dark mode */
+}
+
   /* --- 5. LAYOUT & CONTENT --- */
   #main-content {
 	width: 100%;
@@ -147,12 +163,11 @@ html {
 	width: 100%;
 	max-width: 800px;
 	box-sizing: border-box;
-	padding: 20px;
 	text-align: left;
   }
   
   .dark a {
-	  color: #ff9776; 
+	  color: #d7d7d7; 
   }
   
   /* --- 6. FILM ANIMATIONS (Light Kick / Frame Up) --- */
