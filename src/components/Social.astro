@@ -19,9 +19,10 @@ const { platform, username } = Astro.props;
 
     /* LIGHT MODE HOVER */
     a:hover, a:focus {
-        background-color: #c2c2c2; /* Your accent orange */
+        background-color: color-mix(in srgb, var(--accent-orange), transparent 10%); /* Using your variable for pop */
         color: #000;
-        box-shadow: 0 0 15px rgba(220, 82, 9, 0.4); /* Subtle glow */
+        /* A softer glow feels more 'animated' than a sharp one */
+        box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
     }
 
     /* DARK MODE BASE */
@@ -32,8 +33,8 @@ const { platform, username } = Astro.props;
     /* DARK MODE HOVER */
     :global(.dark) a:hover, 
     :global(.dark) a:focus {
-        background-color: #b7b7b7;
-        color: #000; /* Dark text on the bright orange background */
-        box-shadow: 0 0 20px rgba(220, 82, 9, 0.6); /* Stronger glow for dark mode */
+        background-color: color-mix(in srgb, var(--accent-orange), transparent 30%); /* Using your variable for pop */
+        color: #fff;
+        box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
     }
 </style>

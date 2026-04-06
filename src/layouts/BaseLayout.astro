@@ -3,7 +3,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import FilmGrain from '../components/FilmGrain.astro';
-const { pageTitle } = Astro.props;
 ---
 <html lang="en">
   <head>
@@ -13,14 +12,12 @@ const { pageTitle } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#d7d7d7" media="(prefers-color-scheme: light)" />
-    <title>{pageTitle}</title>
   </head>
   <body>
     <FilmGrain />
     <div id="main-content" class="site-content">
       <div class="side-margins">
         <Header />
-        <h1>{pageTitle}</h1>
       
         <main>
           <slot />

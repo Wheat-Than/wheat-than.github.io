@@ -3,16 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Intro from '../components/Intro.astro';
 import { Image } from 'astro:assets';
 import coverPhoto from '../assets/Diagon_Headshot.jpg';
-const pageTitle = null;
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout>
   <Intro src="/videos/SMPTE Lead In 2.mp4" />
 
   <div id="main-content" class="film-snap-reveal">
     <section class="side-margins bio-container">
       
       <div class="bio-text">
-        <h2 class="greeting">Hi there!</h2>
+        <h1 class="greeting">Hi there!</h1>
         
         <p class="intro-paragraph">
           My name is <strong>Ethan Gray</strong>. I'm a senior at Purdue University studying 
@@ -20,7 +19,7 @@ const pageTitle = null;
         </p>
 
         <p>
-          I'm pursuing a career in design engineering for the entertainment industry. 
+          I'm pursuing a career in technical design and engineering for the entertainment industry. 
           At Purdue, I've developed hands-on skills which I've applied directly to the 
           intersection of technology and the arts. I'm looking to utilize my love for 
           storytelling, collaboration, and creativity to develop new scales of 
@@ -110,8 +109,9 @@ const pageTitle = null;
   .greeting {
     font-family: 'Courier New', Courier, monospace;
     font-size: 3rem;
-    /* Resetting the H2 margin to align perfectly with the top of the image */
-    margin: 0 0 1rem 0; 
+    /* Resetting the H1 margin to align perfectly with the top of the image */
+    margin: 0 0 1rem 0;
+    margin-top: 2.5rem;
     color: #dc5209; /* Your burnt orange accent */
   }
 
@@ -125,6 +125,7 @@ const pageTitle = null;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     filter: sepia(0.2) contrast(1.1);
     display: block; /* Removes the tiny gap browsers put under images */
+    margin-top: 2.5rem;
   }
 
   .project-gallery {

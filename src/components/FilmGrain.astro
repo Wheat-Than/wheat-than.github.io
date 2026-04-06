@@ -101,7 +101,7 @@
 
     @keyframes quick-flash {
         0% { opacity: 0.15; }
-        100% { opacity: 0; }
+        100% { opacity: 0.01; }
     }
   </style>
 
@@ -125,19 +125,6 @@
         };
         randomizeLine();
       });
-
-      const flash = document.getElementById('frame-flash');
-
-      function triggerFlash() {
-        if (!flash) return;
-        flash.classList.add('active-flash');
-        flash.addEventListener('animationend', () => {
-          flash.classList.remove('active-flash');
-          const nextFlashDelay = 5000 + Math.random() * 45000;
-          setTimeout(triggerFlash, nextFlashDelay);
-        }, { once: true });
-      }
-      setTimeout(triggerFlash, 2000);
     }
 
     document.addEventListener('DOMContentLoaded', initFilmDefects);
