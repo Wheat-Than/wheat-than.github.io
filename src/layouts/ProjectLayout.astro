@@ -1,0 +1,120 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  heroImage: ImageMetadata;
+  heroAlt: string;
+  specs: { label: string; value: string }[];
+}
+
+const { title, subtitle, heroImage, heroAlt, specs } = Astro.props;
+---
+
+<BaseLayout>
+  <main id="main-content" class="film-snap-reveal">
+    
+    <section class="side-margins">
+      <div class="project-header">
+        <h1 class="greeting">{title}</h1>
+        <p class="project-subtitle">{subtitle}</p>
+      </div>
+    </section>
+
+    <section class="side-margins project-hero-container">
+      <Image 
+        src={heroImage} 
+        alt={heroAlt} 
+        class="headshot project-hero-img" 
+      />
+    </section>
+
+    <section class="side-margins bio-container project-details">
+      <div class="bio-text">
+        <slot /> 
+      </div>
+
+      <aside class="project-specs">
+        <div class="spec-box">
+          <h3>Specifications</h3>
+          <ul>
+            {specs.map((spec) => (
+              <li><strong>{spec.label}:</strong> {spec.value}</li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="side-margins back-nav">
+      <a href="/projects" class="view-project">← Back to Portfolio</a>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<style>
+  /* Reuse your Global Variable logic */
+  .project-header { margin-bottom: 2rem; }
+  
+  .project-subtitle {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: var(--text-dark);
+    opacity: 0.8;
+    text-transform: uppercase;
+    margin-top: -1rem;
+    line-height: 1;
+  }
+
+  html.dark .project-subtitle { color: var(--text-light); }
+
+  .project-hero-img {
+    object-fit: cover;
+    object-position: center; 
+    margin-bottom: 3rem;
+  }
+
+  .project-specs {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    border-radius: 20px;
+    border-left: 4px solid var(--accent-orange);
+    height: fit-content;
+  }
+
+  html.dark .project-specs { background-color: rgba(255, 255, 255, 0.05); }
+
+  .spec-box h3 {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: var(--accent-orange);
+  }
+
+  .spec-box ul { list-style: none; padding: 0; margin: 0; }
+  .spec-box li { font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+  .back-nav {
+    margin: 2rem 0 0 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 2rem;
+  }
+
+  @media screen and (min-width: 800px) {
+    .project-details {
+      display: flex;
+      flex-direction: row;
+      gap: 60px;
+      align-items: flex-start;
+    }
+    .bio-text { flex: 2; }
+    .project-specs { 
+      flex: 1; 
+      position: sticky; 
+      top: 40px; 
+    }
+  }
+</style>
