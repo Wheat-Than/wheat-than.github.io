@@ -1,0 +1,44 @@
+---
+import ExperienceLayout from "../../layouts/ExperienceLayout.astro";
+import Bechtel from "../../assets/Bechtel_TA_1.png";
+
+const projectSpecs = [
+  { label: "Location", value: "Purdue University" },
+  { label: "Dates", value: "Jan. 2026 - Present" },
+  { label: "Title", value: "Peer Mentor & Lab TA" },
+  { label: "Skills", value: "Design for Manufacture, 3D Printing, Manufacturing Processes" }
+];
+---
+
+<ExperienceLayout 
+    title="Peer Mentor - Bechtel Innovation & Design Center"
+    subtitle="Printing and Prototyping Lab"
+    images={[Bechtel]}
+    specs={projectSpecs}
+>
+    <h2>Overview</h2>
+    <p>
+        The Bechtel Innovation and Design Center at Purdue is the campus' largest makerspace, open to
+        all students on campus. I serve as a Peer Mentor and Lab TA in the Printing and Prototyping lab
+        where I engage with students to guide them along through the rapid prototyping process.
+    </p> 
+
+    <p>
+        I work with many different types of equipment in the lab, including laser cutters, resin 3D 
+        printers, injection molders, and SLS printers. I not only maintain these machines, but I teach 
+        other students how to properly operate and design for these machines. I frequently interface 
+        with students to consult on their projects, determining optimal materials or processes, and then
+        advising on design constraints and guidelines. 
+    </p>
+</ExperienceLayout>
+
+<style is:global>
+    .project-hero-img {
+        width: 100%;
+        height: 450px;
+    }
+
+    h2 {
+        margin-top: -0.8rem;
+    }
+</style>

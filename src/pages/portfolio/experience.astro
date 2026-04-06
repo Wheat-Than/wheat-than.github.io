@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 import ATI from "../../assets/Ethan_Universal_Headshot.png";
 import scenicEngineering from '../../assets/DK_Family_Hut_SNW.png';
+import BIDC from "../../assets/Bechtel_TA.png";
 ---
 <BaseLayout>
   <div id="main-content" class="film-snap-reveal">
@@ -12,30 +13,41 @@ import scenicEngineering from '../../assets/DK_Family_Hut_SNW.png';
     <section class="side-margins project-gallery">
       <div class="project-grid">
 
+        <!-- Bechtel Innovation Design center -->
+        <a href="/portfolio/BIDC" class="project-card">
+            <div class="card-image-wrapper">
+                <Image src={BIDC} alt="Ethan washing resin prints in the BIDC lab." width="400" height="250"/>
+            </div>
+            <div class="card-content">
+                <h3>Peer Mentor - Bechtel Innovation & Design Center</h3>
+                <p>Advising and training students on design for manufacture and rapid prototyping.</p>
+                <span class="view-project">View Experience →</span>
+            </div>
+        </a>
+
        <!-- R&D Internship -->
-       <a href="/portfolio/R&D_ATI" class="project-card">
-        <div class="card-image-wrapper">
-          <Image src={ATI} alt="Ethan at Epic Universe, Benchmarking" width="400" height="250"/>
-        </div>
-        <div class="card-content">
-          <h3>Research and Development Internship</h3>
-          <p>Technology innovation, in-depth prototyping, and blue sky experiential design.</p>
-          <span class="view-project">View Experience →</span>
-        </div>
-      </a>
+        <a href="/portfolio/R&D_ATI" class="project-card">
+            <div class="card-image-wrapper">
+                <Image src={ATI} alt="Ethan at Epic Universe, Benchmarking" width="400" height="250"/>
+            </div>
+            <div class="card-content">
+                <h3>Research and Development Internship</h3>
+                <p>Technology innovation, in-depth prototyping, and blue sky experiential design.</p>
+                <span class="view-project">View Experience →</span>
+            </div>
+        </a>
 
       <!-- Scenic Engineering Internship -->
-      <a href="/portfolio/ScenicEngineering" class="project-card">
-        <div class="card-image-wrapper">
-          <Image src={scenicEngineering} alt="DK Family Hut" width="400" height="250"/>
-        </div>
-        <div class="card-content">
-          <h3>Scenic Engineering Internship</h3>
-          <p>Project management, vendor coordination, and product delivery on-site at Epic Universe</p>
-          <span class="view-project">View Experience →</span>
-        </div>
-      </a>     
-
+        <a href="/portfolio/ScenicEngineering" class="project-card">
+            <div class="card-image-wrapper">
+                <Image src={scenicEngineering} alt="DK Family Hut" width="400" height="250"/>
+            </div>
+            <div class="card-content">
+                <h3>Scenic Engineering Internship</h3>
+                <p>Project management, vendor coordination, and product delivery on-site at Epic Universe</p>
+                <span class="view-project">View Experience →</span>
+            </div>
+        </a>     
       </div>
     </section>
   </div>
