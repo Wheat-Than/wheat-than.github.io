@@ -1,6 +1,12 @@
 ---
 import Social from "./Social.astro";
 ---
+<footer>
+	<Social platform = "linkedin" username = "in/ethan-gray-bb024423a"/>
+	<Social platform = "github" username = "wheat-than"/>
+	<a href="/Ethan Gray's Resume.pdf" target="_blank" rel="noopener noreferrer" class="resume">Resume</a>
+</footer>
+
 <style>
 	footer {
 		display: flex;
@@ -10,10 +16,37 @@ import Social from "./Social.astro";
 		margin-bottom: 1rem;
 		padding: 20px;
 	}
-</style>
 
-<footer>
-	<Social platform = "linkedin" username = "in/ethan-gray-bb024423a"/>
-	<Social platform = "instagram" username = "wheat_than"/>
-	<Social platform = "github" username = "wheat-than"/>
-</footer>
+	a {
+        padding: 0.5rem 1rem;
+        color: #000; /* Default light mode text */
+        border-radius: 8px;
+        text-decoration: none;
+        font-family: 'Courier New', Courier, monospace;
+        text-transform: capitalize;
+        font-weight: 900;
+        /* Smoothly fades the color and background in/out */
+        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* LIGHT MODE HOVER */
+    a:hover, a:focus {
+        background-color: color-mix(in srgb, var(--accent-orange), transparent 10%); /* Using your variable for pop */
+        color: #000;
+        /* A softer glow feels more 'animated' than a sharp one */
+        box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
+    }
+
+    /* DARK MODE BASE */
+    :global(.dark) a {
+        color: #d7d7d7; /* Your light grey text */
+    }
+
+    /* DARK MODE HOVER */
+    :global(.dark) a:hover, 
+    :global(.dark) a:focus {
+        background-color: color-mix(in srgb, var(--accent-orange), transparent 30%); /* Using your variable for pop */
+        color: #fff;
+        box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
+    }
+</style>

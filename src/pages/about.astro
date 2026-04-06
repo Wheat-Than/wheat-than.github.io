@@ -1,54 +1,69 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-// Replace this with your actual image path
-// import aboutPhoto from '../assets/Ethan_Working.jpg'; 
+import aboutPhoto from '../assets/EG_Prof_Headshot.jpg';
+import velociPhoto from '../assets/EG_VelociCoaster_Photo.jpg';
 ---
 
 <BaseLayout>
   <div id="main-content" class="film-snap-reveal">
-    
-    <section class="side-margins">
-      <h1 class="greeting">About Me</h1>
-    </section>
-
     <section class="side-margins bio-container">
       <div class="bio-text">
+        <h1 class="greeting">About Me</h1>
         <p class="intro-paragraph">
-          [Insert your main professional bio here. Talk about your passion for 
-          technical direction and how your time at Purdue has shaped your 
-          engineering approach.]
-        </p>
-        
-        <p>
-          [Insert a second paragraph here about your specific interests, 
-          like 3D printing workflows or scenic automation.]
+          I'm a current Senior at Purdue University graduating in Fall 2026. I'm majoring in Multidisciplinary 
+          Engineering, concentrating in Theatre Engineering, with minors in Theatre Design and Production and 
+          Design and Innovation. I'm an aspiring engineer, creative, and storyteller, hoping to combine my love 
+          of entertainment with the science of engineering to create new story driven experiences.
         </p>
 
         <div class="resume-link">
-          <a href="/Ethan_Gray_Resume.pdf" class="view-project" target="_blank">
+          <a href="/Ethan Gray's Resume.pdf" target="_blank" rel="noopener noreferrer" class="view-project">
             Access PDF Resume →
           </a>
-        </div>
+        </div>        
       </div>
 
-      <!-- div class="bio-image">
+      <div class="bio-image">
         <Image 
           src={aboutPhoto} 
-          alt="Ethan Gray working on a project" 
+          alt="Ethan Gray Professional Headshot" 
           class="headshot"
-          width="400" 
-          height="400" 
         />
-      </div -->
+      </div>
+    </section>
+    <section class="side-margins bio-container reverse-layout">
+      <div class="bio-text">
+        <h1 class="greeting what-is">What is Theatre Engineering?</h1>
+        <p class="intro-paragraph">
+          Theatre Engineering is a <strong>unique, ABET accredited</strong> engineering major at Purdue which explores 
+          the application of <strong>Mechanical, Civil, and Electrical engineering</strong> principles in entertainment 
+          environments. My coursework branches across schools in the College of Engineering and includes 
+          courses within the Department of Theatre and Dance's MFA <strong>Technical Direction</strong> program. This allows me to 
+          fully explore the applications of my <strong>engineering knowledge in live entertainment settings</strong>, including 
+          theme parks, concerts, and theatrical productions.
+        </p>
+      </div>
+      <div class="bio-image">
+        <Image 
+          src={velociPhoto} 
+          alt="Ethan Gray Professional Headshot" 
+          class="headshot"
+        />
+      </div>
     </section>
 
     <section class="side-margins awards-container">
       <h2 class="section-title">Awards & Recognition</h2>
       <ul class="awards-list">
-        <li><strong>Honors Multidisciplinary Engineering</strong> — Purdue University</li>
-        <li><strong>Technical Achievement Award</strong> — [Organization Name] (2025)</li>
-        <li><strong>Grant Recipient</strong> — Leonardo da Vinci Animatronic Research</li>
+        <li><strong>Dean's List and Semester Honors</strong> <br/> — Purdue University (2022 - Present)</li>
+        <li><strong>Outstanding Senior Academic Achievement</strong> <br/> — Purdue University (2026)</li>
+        <li><strong>Commendation for Technical Communication - Attractions Design</strong> <br/> — Toronto 
+          Metropolitan Thrill Design Competition, (2025)</li>
+        <li><strong>Outstanding Service</strong> <br/> — Purdue University (2025)</li>
+        <li><strong>Outstanding Sophomore Academic Achievement</strong> <br/> — Purdue University (2024)</li>
+        <li><strong>International Honor Thespian</strong> <br/> — Educational Theater Association (2022)</li>
+        <li><strong>California Senior Honor Thespian</strong> <br/> — Educational Theatre Association (2022)</li>
       </ul>
     </section>
 
@@ -65,8 +80,7 @@ import { Image } from 'astro:assets';
   }
 
   .awards-container {
-    margin-top: 4rem;
-    margin-bottom: 6rem;
+    margin-top: 2rem;
   }
 
   .awards-list {
@@ -91,6 +105,12 @@ import { Image } from 'astro:assets';
     font-weight: bold;
   }
 
+  .bio-container {
+    display: flex;
+    flex-direction: column-reverse; /* Put image on top for mobile */
+    gap: 20px;
+  }
+
   /* Desktop layout mirroring index.astro */
   @media screen and (min-width: 800px) {
     .bio-container {
@@ -100,6 +120,24 @@ import { Image } from 'astro:assets';
       gap: 50px;
     }
     .bio-text { flex: 1; }
-    .bio-image { flex: 0 0 300px; }
+    .bio-image { 
+      flex: 0 0 300px;
+      margin-top: 3rem; 
+    }
+  }
+
+  .headshot {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .reverse-layout {
+    flex-direction: row-reverse;
+  }
+
+  .what-is {
+    line-height: 1.1;
+    margin-bottom: 1.65rem;
   }
 </style>

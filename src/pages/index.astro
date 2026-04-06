@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Intro from '../components/Intro.astro';
 import { Image } from 'astro:assets';
 import coverPhoto from '../assets/Diagon_Headshot.jpg';
+import scenicEngineering from '../assets/DK_Family_Hut_SNW.JPEG';
 ---
 <BaseLayout>
   <Intro src="/videos/SMPTE Lead In 2.mp4" />
@@ -25,12 +26,6 @@ import coverPhoto from '../assets/Diagon_Headshot.jpg';
           storytelling, collaboration, and creativity to develop new scales of 
           immersive and interactive experiences.
         </p>
-
-        <p>
-          <strong>If you're wondering why this website is so odd, me too! It's still under construction. Thank you for your patience.</strong>
-        </p>
-
-        <a href="https://ethangrayengineer.wixsite.com/portfolio">Please follow this link to my built site!</a>
       </div>
 
       <div class="bio-image">
@@ -44,18 +39,18 @@ import coverPhoto from '../assets/Diagon_Headshot.jpg';
       </div>
 
     </section>
-    <!-- <section class="side-margins project-gallery">
+    <section class="side-margins project-gallery">
       <h2 class="section-title">Selected Works</h2>
       
       <div class="project-grid">
         <a href="/projects/theatre-automation" class="project-card">
           <div class="card-image-wrapper">
-            <Image src={coverPhoto} alt="Project Name" width="400" height="250" />
+            <Image src={scenicEngineering} alt="DK Family Hut" width="400" height="250"/>
           </div>
           <div class="card-content">
-            <h3>Stage Automation System</h3>
-            <p>Mechanical design and PLC integration for high-speed scenic transitions.</p>
-            <span class="view-project">View Technical Case Study →</span>
+            <h3>Scenic Engineering Internship</h3>
+            <p>Project management, vendor coordination, and product delivery on-site at Epic Universe</p>
+            <span class="view-project">View Experience →</span>
           </div>
         </a>
     
@@ -65,11 +60,11 @@ import coverPhoto from '../assets/Diagon_Headshot.jpg';
           <div class="card-content">
             <h3>Structural Rigging Analysis</h3>
             <p>Finite Element Analysis (FEA) for overhead arena rigging points.</p>
-            <span class="view-project">View Technical Case Study →</span>
+            <span class="view-project">View Project →</span>
           </div>
         </a>
       </div>
-    </section> -->
+    </section>
   </div>
 </BaseLayout>
 
@@ -120,16 +115,8 @@ import coverPhoto from '../assets/Diagon_Headshot.jpg';
     line-height: 1.6;
   }
 
-  .headshot {
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    filter: sepia(0.2) contrast(1.1);
-    display: block; /* Removes the tiny gap browsers put under images */
-    margin-top: 2.5rem;
-  }
-
-  .project-gallery {
-  margin-top: 6rem;
+.project-gallery {
+  margin-top: 2rem;
   margin-bottom: 6rem;
 }
 
@@ -144,6 +131,12 @@ import coverPhoto from '../assets/Diagon_Headshot.jpg';
   display: grid;
   grid-template-columns: 1fr; /* Stacked on mobile */
   gap: 30px;
+}
+
+.headshot {
+    margin-top: 3rem;
+    width = 100%;
+    height = auto;
 }
 
 .project-card {
@@ -171,7 +164,7 @@ import coverPhoto from '../assets/Diagon_Headshot.jpg';
 
 .card-image-wrapper {
   width: 100%;
-  height: 200px;
+  height: 300px;
   overflow: hidden;
   background: #161616;
 }
