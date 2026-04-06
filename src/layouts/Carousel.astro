@@ -1,0 +1,99 @@
+---
+interface Props {
+  caption?: string;
+}
+const { caption } = Astro.props;
+---
+
+<div class="media-container">
+  <div class="film-strip-track">
+    <slot /> 
+  </div>
+  {caption && <p class="film-caption"><span>ID:</span> {caption}</p>}
+</div>
+
+<style>
+  .media-container {
+    width: 100%;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .film-strip-track {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    /* Only snap if there is more than one child */
+    scroll-snap-type: x proximity; 
+    scrollbar-width: none; /* Firefox */
+    padding-bottom: 10px;
+  }
+
+  .film-strip-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  /* Target the images passed into the slot */
+  .film-strip-track :global(img) {
+    flex: 0 0 auto;
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 25px;
+    scroll-snap-align: center;
+    border: 1px solid rgba(0,0,0,0.1);
+    filter: sepia(0.1) contrast(1.05); /* Subtle film aging */
+    transition: transform 0.3s ease;
+  }
+
+  /* If there's only ONE image, remove the "peak" effect and scroll */
+  .film-strip-track:not(:has(:nth-child(2))) {
+    overflow-x: hidden;
+  }
+
+  /* If there are MULTIPLE images, make them slightly smaller to show the next one */
+  .film-strip-track:has(:nth-child(2)) :global(img) {
+    width: 90%; 
+    cursor: grab;
+  }
+
+  .film-caption {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: var(--accent-red);
+    text-transform: uppercase;
+  }
+  
+  .film-caption span {
+    opacity: 0.5;
+  }
+
+  
+</style>
+
+<script>
+    // Select all tracks in case you have multiple carousels on one page
+    const tracks = document.querySelectorAll('.film-strip-track');
+    
+    tracks.forEach(track => {
+      // Cast the event to MouseEvent to gain access to clientX
+      track.addEventListener('click', (e: Event) => {
+        const mouseEvent = e as MouseEvent;
+        
+        const rect = track.getBoundingClientRect();
+        const x = mouseEvent.clientX - rect.left;
+        
+        // Engineering Logic: 
+        // If there's only one child, don't trigger the scroll math
+        if (track.children.length <= 1) return;
+  
+        // Determine scroll direction based on click position
+        if (x > rect.width / 2) {
+          track.scrollBy({ left: rect.width * 0.8, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: -rect.width * 0.8, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>

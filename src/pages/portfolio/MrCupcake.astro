@@ -1,0 +1,49 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import img1 from '../../assets/Inspiration_Cupcake.png';
+import img2 from '../../assets/Cupcake_1.png';
+import img3 from '../../assets/Cupcake_2.png';
+import cupcake from '../../assets/Mr_Cupcake_Resin_Print.jpg';
+
+const projectSpecs = [
+  { label: "Location", value: "Purdue University" },
+  { label: "Dates", value: "Mar. 2026 - Present" },
+  { label: "Course", value: "ME444 Computer Aided Design" },
+  { label: "Skills", value: "Creo Parametric, Design for Manufacture, Systems Integration" }
+];
+---
+
+<ProjectLayout 
+    title="Mr. Cupcake Mechatronic Toy Prototype"
+    subtitle="Coursework in Advanced CAD and Design for Rapid Prototyping"
+    images={[img1, img2, img3, cupcake]}
+    specs={projectSpecs}>
+
+    <h2>Overview</h2>
+    <p>
+        Meet Mr. Cupcake! This exciting prototype toy will take jumpscares to the next level, bringing Five Night's at Freddy's
+        very own cute cupcake to life. Don't be fooled by his sweet design, he hides a sinister and biting personality.
+    </p> 
+
+    <p>
+        Mr. Cupcake features an RC drive system for sneaking up on unsuspecting victims, eyes that turn left and right to face where
+        he's moving, blinking at random intervals, a lit candle which changes color during attacks, and a complex jaw linkage to attack
+        his target. 
+    </p>
+
+    <p>
+        Modelled entirely in Creo Parametric, my team utilized motion skeletons and surface modeling to create a virtual prototype. Our physical
+        model will employ 3 servos, two DC drive motors, an ESP32 dev board, and a programmable LED to achieve the desired effects. 
+    </p>
+</ProjectLayout>
+
+<style is:global>
+    .project-hero-img {
+        width: 100%;
+        height: 450px;
+    }
+
+    h2 {
+        margin-top: -0.8rem;
+    }
+</style>

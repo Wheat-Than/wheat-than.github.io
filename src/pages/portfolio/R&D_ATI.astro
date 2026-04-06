@@ -1,0 +1,45 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ATI from "../../assets/Ethan_Universal_Headshot.png";
+
+const projectSpecs = [
+  { label: "Location", value: "Universal Creative" },
+  { label: "Dates", value: "May 2025 - Aug. 2025" },
+  { label: "Title", value: "R&D Intern, Advanced Technology Initiatives" }
+];
+---
+
+<ProjectLayout 
+    title="Research and Development Internship"
+    subtitle="Summer 2025 - Universal Creative Advanced Technology Initiatives"
+    images={[ATI]}
+    specs={projectSpecs}
+>
+    <h2>Overview</h2>
+    <p>
+        As a Research and Development Intern for Universal Creative ATI, I served on a dynamic team of creative 
+        technologists, engineers, and creatives to ideate, develop, and prototype new and unique themed 
+        entertainment experiences. As part of my day-to-day, I explored new technologies in a variety of ways, 
+        focusing on how I could apply them to themed entertainment. Some of my favorite technology applications 
+        to explore were related to ride systems and special effects. From there, I created novel ideas, 
+        implementations, or solutions in themed entertainment technology alongside members of my team. From this 
+        process, I currently have multiple concepts from wearable technology to application of fluid dynamics 
+        models in special effects routing through the patent legal team. Finally, I also worked with the team to 
+        design mockups, prototypes, and playtests of our concepts for testing or showcasing. These ranged from 
+        low fidelity models to high fidelity experiences. Through this, I would collect data on user interactions, 
+        feedback, and then iterate on the team's designs.
+    </p> 
+
+    <!--<p>Due to strict Non-Disclosure Agreements, I am currently unable to provide additional artefacts to showcase my work.</p>-->
+</ProjectLayout>
+
+<style is:global>
+    .project-hero-img {
+        width: 100%;
+        height: 450px;
+    }
+
+    h2 {
+        margin-top: -0.8rem;
+    }
+</style>

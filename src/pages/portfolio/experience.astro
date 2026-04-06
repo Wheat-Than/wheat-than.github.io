@@ -1,0 +1,200 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import ATI from "../../assets/Ethan_Universal_Headshot.png";
+import scenicEngineering from '../../assets/DK_Family_Hut_SNW.png';
+---
+<BaseLayout>
+  <div id="main-content" class="film-snap-reveal">
+    <h1>Experience</h1>
+
+    <section class="side-margins project-gallery">
+      <div class="project-grid">
+
+       <!-- R&D Internship -->
+       <a href="/portfolio/R&D_ATI" class="project-card">
+        <div class="card-image-wrapper">
+          <Image src={ATI} alt="Ethan at Epic Universe, Benchmarking" width="400" height="250"/>
+        </div>
+        <div class="card-content">
+          <h3>Research and Development Internship</h3>
+          <p>Technology innovation, in-depth prototyping, and blue sky experiential design.</p>
+          <span class="view-project">View Experience →</span>
+        </div>
+      </a>
+
+      <!-- Scenic Engineering Internship -->
+      <a href="/portfolio/ScenicEngineering" class="project-card">
+        <div class="card-image-wrapper">
+          <Image src={scenicEngineering} alt="DK Family Hut" width="400" height="250"/>
+        </div>
+        <div class="card-content">
+          <h3>Scenic Engineering Internship</h3>
+          <p>Project management, vendor coordination, and product delivery on-site at Epic Universe</p>
+          <span class="view-project">View Experience →</span>
+        </div>
+      </a>     
+
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    html::-webkit-scrollbar {
+      display: none;
+    }
+  
+    /* Hide scrollbar for IE, Edge and Firefox */
+    html {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    
+    /* --- 1. THE TEXT RESET --- */
+    /* This kills the default browser padding/margins on all text blocks */
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  
+    /* This adds spacing ONLY between two paragraphs, keeping the 
+       top and bottom of the whole block perfectly flush */
+    p + p {
+      margin-top: 1.5rem;
+    }
+  
+    .bio-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      margin-top: 0;
+    }
+  
+    .greeting {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 3rem;
+      /* Resetting the H1 margin to align perfectly with the top of the image */
+      margin: 0 0 1rem 0;
+      margin-top: 2.5rem;
+      color: #dc5209; /* Your burnt orange accent */
+    }
+  
+    .intro-paragraph {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+  
+  .project-gallery {
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+  }
+  
+  .section-title {
+    font-family: 'Courier New', Courier, monospace;
+    color: #dc5209;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stacked on mobile */
+    gap: 30px;
+  }
+  
+  .headshot {
+      margin-top: 3rem;
+      width = 100%;
+      height = auto;
+  }
+  
+  .project-card {
+    text-decoration: none;
+    color: inherit;
+    background: rgba(215, 215, 215, 0.3); /* Subtle glass base */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  }
+  
+  /* DARK MODE ADJUSTMENT */
+  :global(.dark) .project-card {
+    background: rgba(20, 20, 20, 0.5);
+    border: 1px solid rgba(215, 215, 215, 0.1);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+    border: 1px solid rgba(220, 82, 9, 0.6);
+    box-shadow: 0 10px 30px rgba(220, 82, 9, 0.2);
+  }
+  
+  .card-image-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: #161616;
+  }
+  
+  .card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .project-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  .card-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+  }
+  
+  .card-content p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 15px;
+  }
+  
+  .view-project {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #dc5209;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  
+    /* --- 2. DESKTOP ALIGNMENT --- */
+    @media screen and (min-width: 800px) {
+      .bio-container {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+  
+      .bio-text {
+        flex: 1;
+      }
+  
+      .bio-image {
+        flex: 0 0 300px;
+      }
+  
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr); /* Side-by-side on desktop */
+      } 
+    }
+  </style>

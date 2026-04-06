@@ -1,0 +1,47 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import img1 from "../../assets/Coaster_Train_1.png";
+import img2 from "../../assets/Coaster_Track_1.png";
+import img3 from "../../assets/Coaster_Track_2.png";
+
+const projectSpecs = [
+  { label: "Location", value: "Purdue University" },
+  { label: "Dates", value: "Aug. 24 - Present" },
+  { label: "Organization", value: "Theme Park Engineering and Design @ Purdue" },
+  { label: "Skills", value: "Solidworks, Fusion360, Additive Manufacturing, Project Planning"}
+];
+---
+
+<ProjectLayout 
+    title="3D Printed Roller Coaster"
+    subtitle="Functioning Scale Model with Theme Park Engineering & Design @ Purdue"
+    images={[img1, img2, img3]}
+    specs={projectSpecs}
+>
+    <h2>Overview</h2>
+    <p>
+        I began leading a project to design and build a unique, 3D printed model rollercoaster with the Theme Park 
+        Engineering and Design Club at Purdue. After leading the project for 3 semester as a design lead and project 
+        manager, completing a successful design run and operating our model, I began to work on a person version of 
+        the project to act as an educational demonstration.
+    </p> 
+
+    <p>
+        Using the lessons from the group effort, this personal project aims to utilize industry leading design for 
+        additive manufacturing principles to develop a 1:30 scale, functioning model which can serve as a demonstration 
+        of a typical theme park attraction control system. Utilizing SolidWorks, Fusion360, Force Vector Design, and 
+        Python in my work, I have successfully test printed a scale model train, track segments, and supports in Selective 
+        Laser Sintering (SLS) using Nylon-12. 
+    </p>
+</ProjectLayout>
+
+<style is:global>
+    .project-hero-img {
+        width: 100%;
+        height: 650px;
+    }
+
+    h2 {
+        margin-top: -0.8rem;
+    }
+</style>

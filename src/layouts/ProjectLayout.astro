@@ -1,16 +1,16 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { Image } from 'astro:assets';
+import Carousel from './Carousel.astro'; // Ensure this path is correct
 
 interface Props {
   title: string;
   subtitle: string;
-  heroImage: ImageMetadata;
-  heroAlt: string;
+  // Changed from a single ImageMetadata to an Array of strings/metadata
+  images: any[]; 
   specs: { label: string; value: string }[];
 }
 
-const { title, subtitle, heroImage, heroAlt, specs } = Astro.props;
+const { title, subtitle, images, specs } = Astro.props;
 ---
 
 <BaseLayout>
@@ -24,11 +24,13 @@ const { title, subtitle, heroImage, heroAlt, specs } = Astro.props;
     </section>
 
     <section class="side-margins project-hero-container">
-      <Image 
-        src={heroImage} 
-        alt={heroAlt} 
-        class="headshot project-hero-img" 
-      />
+      <div class="hero-carousel-wrapper">
+        <Carousel>
+          {images.map((img) => (
+            <img src={img.src || img} alt={title} class="project-hero-img" />
+          ))}
+        </Carousel>
+      </div>
     </section>
 
     <section class="side-margins bio-container project-details">
@@ -56,9 +58,21 @@ const { title, subtitle, heroImage, heroAlt, specs } = Astro.props;
 </BaseLayout>
 
 <style>
-  /* Reuse your Global Variable logic */
+  /* Hero Carousel Tweak */
+  .hero-carousel-wrapper {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  /* Ensure hero images maintain a consistent cinematic aspect ratio */
+  .project-hero-img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Existing Styles */
   .project-header { margin-bottom: 2rem; }
-  
   .project-subtitle {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
@@ -71,17 +85,11 @@ const { title, subtitle, heroImage, heroAlt, specs } = Astro.props;
 
   html.dark .project-subtitle { color: var(--text-light); }
 
-  .project-hero-img {
-    object-fit: cover;
-    object-position: center; 
-    margin-bottom: 3rem;
-  }
-
   .project-specs {
     background-color: rgba(0, 0, 0, 0.05);
     padding: 2rem;
     border-radius: 20px;
-    border-left: 4px solid var(--accent-orange);
+    border-left: 4px solid var(--accent-red); /* Updated to your new Film Red */
     height: fit-content;
   }
 
@@ -91,7 +99,7 @@ const { title, subtitle, heroImage, heroAlt, specs } = Astro.props;
     font-family: 'Courier New', Courier, monospace;
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
-    color: var(--accent-orange);
+    color: var(--accent-red);
   }
 
   .spec-box ul { list-style: none; padding: 0; margin: 0; }

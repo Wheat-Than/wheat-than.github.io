@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
-import coaster from "../../assets/DK_Family_Hut_SNW.JPEG";
+import DK from "../../assets/DK_Family_Hut_SNW.png";
 
 const projectSpecs = [
   { label: "Location", value: "Universal Creative" },
@@ -12,8 +12,7 @@ const projectSpecs = [
 <ProjectLayout 
     title="Scenic Engineering Internship"
     subtitle="Fall 2024 - Universal Epic Universe Super Nintendo World"
-    heroImage={coaster}
-    heroAlt="VelociCoaster train launching"
+    images={[DK]}
     specs={projectSpecs}
 >
     <h2>Overview</h2>
