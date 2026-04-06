@@ -90,9 +90,9 @@ a {
 	font-weight: bold;
 	padding: 10px;
 	cursor: pointer;
-	width: 100px;
+	width: 90px;
 	letter-spacing: 1px;
-	border-radius: 5px;
+	border-radius: 8px;
 	z-index: 1001;
 }
   
@@ -113,12 +113,14 @@ a {
 	visibility: hidden;
 	opacity: 0;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-end;
 	position: absolute;
 	top: 100%;
 	right: 0;
-	width: 220px;
-	padding: 15px 0;
+	min-width: 180px;
+    max-width: 90vw;
+	white-space: nowrap;
+	padding: 10px 20px;
 	z-index: 1000;
 	background-color: var(--glass-light);
 	backdrop-filter: blur(50px) saturate(170%);
@@ -143,7 +145,8 @@ html.dark .nav-links {
   
 .nav-links a {
     text-align: center;
-    padding: 12px 0;
+	width: 100%;
+    padding: 10px 0px;
     margin: 5px 10px;
     font-size: 1.3rem;
     font-weight: bolder;
