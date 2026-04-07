@@ -1,0 +1,35 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import img1 from "../../assets/website_1.png";
+
+const projectSpecs = [
+  { label: "Location", value: "My Laptop's C: Drive" },
+  { label: "Dates", value: "Jan. 26 - Present" },
+  { label: "Skills", value: "HTML, CSS, JavaScript, Preact, Vite, Astro"}
+];
+---
+
+<ProjectLayout 
+    title="Assistant Technical Direction Project"
+    subtitle="Purdue University Department of Theatre and Dance"
+    images={[img1]}
+    specs={projectSpecs}
+>
+    <h2>Overview</h2>
+    <p>
+        This website is fully designed, developed, and deployed by me! I am using the Astro framework, a system
+        designed to easily combine HTML, CSS, JavaScript, Preact, and more into a heavily optimized tool. My site 
+        is deployed through GitHub Pages, and you can visit my GitHub to see my work on this portfolio! 
+    </p> 
+</ProjectLayout>
+
+<style is:global>
+    .project-hero-img {
+        width: 100%;
+        height: 650px;
+    }
+
+    h2 {
+        margin-top: -0.8rem;
+    }
+</style>
