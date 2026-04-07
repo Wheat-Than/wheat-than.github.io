@@ -1,0 +1,42 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import img1 from "../../assets/Gloria_ATD_1.png";
+import img2 from "../../assets/Gloria_ATD_2.png";
+import img3 from "../../assets/Gloria_ATD_3.png";
+import img4 from "../../assets/Gloria_ATD_4.png";
+import img5 from "../../assets/Gloria_ATD_5.png";
+
+const projectSpecs = [
+  { label: "Location", value: "Purdue University" },
+  { label: "Dates", value: "Nov. 24 - Feb. 25" },
+  { label: "Organization", value: "Purdue University Dept. of Theatre and Dance" },
+  { label: "Skills", value: "AutoCAD, Cost & Labor Estimates, USITT Drafting"}
+];
+---
+
+<ProjectLayout 
+    title="Assistant Technical Direction Project"
+    subtitle="Purdue University Department of Theatre and Dance"
+    images={[img1, img2, img3, img4, img5]}
+    specs={projectSpecs}
+>
+    <h2>Overview</h2>
+    <p>
+        As an Assistant Technical Director for Purdue, I was assigned to deliver on a specific scenic unit for a 
+        production of <i>Gloria</i> by Branden Jacobs Jenkins. I was assigned a set of wall flats, including a 
+        door, to draw, estimate time required to construct, and craft a cost estimate for. Additionally, I was 
+        tasked with creating detailed instructions for load-in install and strike removal from the theatrical 
+        space. This exercise was completed in preparation for my senior capstone in the Department of Theatre and Dance. 
+    </p> 
+</ProjectLayout>
+
+<style is:global>
+    .project-hero-img {
+        width: 100%;
+        height: 650px;
+    }
+
+    h2 {
+        margin-top: -0.8rem;
+    }
+</style>

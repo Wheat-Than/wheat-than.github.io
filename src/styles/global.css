@@ -45,12 +45,13 @@ body {
   /* --- 2. TYPOGRAPHY --- */
 h1, h2, .greeting, .menu {
 	font-family: 'Courier New', Courier, monospace;
+	line-height: 3rem;
 }
   
 h1, .greeting {
 	font-size: 3rem;
 	color: var(--accent-orange);
-	margin: 2.5rem 0 1rem 0;
+	margin: 2.5rem 0 2rem 0;
 	text-align: left;
 }
   

@@ -3,7 +3,9 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import cupcake from '../../assets/Mr_Cupcake_Resin_Print.jpg';
 import coasterTrain from '../../assets/Coaster_Train_1.png';
-import scenicEngineering from '../../assets/DK_Family_Hut_SNW.png';
+import equalizer from '../../assets/Audio_Equalizer.png';
+import eddy from '../../assets/Mech_Design_1.png'
+import ATD from '../../assets/Gloria_ATD_1.png';
 ---
 <BaseLayout>
   <div id="main-content" class="film-snap-reveal">
@@ -24,6 +26,19 @@ import scenicEngineering from '../../assets/DK_Family_Hut_SNW.png';
             </div>
           </a>
 
+          <!-- ATD on Gloria -->
+          <a href="/portfolio/ATD_Gloria" class="project-card">
+            <div class="card-image-wrapper">
+              <div class="placeholder-img"></div> 
+                <Image src={ATD} alt="Scenery for a production of Gloria." width="400" height="250"/>
+              </div>
+            <div class="card-content">
+              <h3>Assistant Technical Direction Project</h3>
+              <p>Drafting custom stage scenery and performing cost and time estimates.</p>
+              <span class="view-project">View Project →</span>
+            </div>
+          </a>
+
           <!-- 3D Printed Coaster Project -->
           <a href="/portfolio/3D_Coaster" class="project-card">
             <div class="card-image-wrapper">
@@ -37,15 +52,28 @@ import scenicEngineering from '../../assets/DK_Family_Hut_SNW.png';
             </div>
           </a>
 
-          <!-- Placeholder -->
-          <a href="/portfolio/PLACEHOLDER" class="project-card">
+          <!-- Mechanical Design for the Stage -->
+          <a href="/portfolio/Mech_Design" class="project-card">
             <div class="card-image-wrapper">
               <div class="placeholder-img"></div> 
-                <Image src={scenicEngineering} alt="DK Family Hut" width="400" height="250"/>
+                <Image src={eddy} alt="CAD file showcasing an eddy current braking system for stage scenery." width="400" height="250"/>
               </div>
             <div class="card-content">
-              <h3>Title</h3>
-              <p>Description</p>
+              <h3>Mechanical Design for the Stage</h3>
+              <p>Concept and detailed design for stage machines in complex show environments.</p>
+              <span class="view-project">View Project →</span>
+            </div>
+          </a>
+
+          <!-- ECE 2k1 Audio Equalizer -->
+          <a href="/portfolio/Audio_Equalizer/" class="project-card">
+            <div class="card-image-wrapper">
+              <div class="placeholder-img"></div> 
+                <Image src={equalizer} alt="Audio Equalizer" width="400" height="250"/>
+              </div>
+            <div class="card-content">
+              <h3>Analog Audio Equalizer</h3>
+              <p>RC and RCL filters implemented in a 3-channel, basic audio equalizer.</p>
               <span class="view-project">View Project →</span>
             </div>
           </a>
@@ -103,7 +131,7 @@ import scenicEngineering from '../../assets/DK_Family_Hut_SNW.png';
   
   .project-gallery {
     margin-top: 2rem;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
   }
   
   .section-title {

@@ -1,0 +1,52 @@
+---
+import ExperienceLayout from "../../layouts/ExperienceLayout.astro";
+import CM from "../../assets/CM_Show_1.png";
+import img2 from "../../assets/CM_Show_2.png";
+import img3 from "../../assets/CM_Show_3.jpg";
+import img4 from "../../assets/CM_Show_4.jpg";
+
+const projectSpecs = [
+  { label: "Organization", value: "The Crazy Monkeys" },
+  { label: "Dates", value: "Aug. 2025 - Present" },
+  { label: "Title", value: "President" },
+  { label: "Skills", value: "Event Planning and Logistics, Lesson Planning, Time and Scope Management" }
+];
+---
+
+<ExperienceLayout 
+    title="President - The Crazy Monkeys"
+    subtitle="Purdue's Premiere Improv Comedy Troupe"
+    images={[img2, CM, img3, img4]}
+    specs={projectSpecs}
+>
+    <h2>Overview</h2>
+    <p>
+        The Crazy Monkeys is Purdue's Premiere Improv Comedy Troupe. For over 30 years, The Crazy Monkeys
+        have been a staple of the Purdue comedy scene, adding a respite from the stressful college experience.
+        This isn't just college improv, it's impact. 
+    </p> 
+
+    <p>
+        Under my leadership, The Crazy Monkeys have utilized our $35,000 budget to perform in the largest student-reservable 
+        theaters at Purdue: Fowler Hall and Loeb Playhouse. These venues seat 400 and 1011 students respectively. As President, 
+        I have led The Crazy Monkeys to reach over 4,500 students so far this academic year. 
+    </p>
+
+    <p>
+        In addition to growing impact, I coordinated venue rentals with Purdue's Hall of Music, planned and executed extensive 
+        advertising campaigns, and managed our organization's budget. I utilized excess funds for the purchase of long-term equipment, 
+        ensuring we can continue to deliver the premiere image we have come to cultivate. Further, as President of a comedy group, I 
+        led twice-weekly practices, planning lessons for members to engage and grow their improv, comedy, and public speaking skills. 
+    </p>
+</ExperienceLayout>
+
+<style is:global>
+    .project-hero-img {
+        width: 100%;
+        height: 450px;
+    }
+
+    h2 {
+        margin-top: -0.8rem;
+    }
+</style>

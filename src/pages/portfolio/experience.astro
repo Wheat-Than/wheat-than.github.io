@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ATI from "../../assets/Ethan_Universal_Headshot.png";
 import scenicEngineering from '../../assets/DK_Family_Hut_SNW.png';
 import BIDC from "../../assets/Bechtel_TA.png";
+import CM from "../../assets/CM_Show_1.png";
 ---
 <BaseLayout>
   <div id="main-content" class="film-snap-reveal">
@@ -12,6 +13,18 @@ import BIDC from "../../assets/Bechtel_TA.png";
 
     <section class="side-margins project-gallery">
       <div class="project-grid">
+
+        <!-- The Crazy Monkeys Comedy -->
+        <a href="/portfolio/Monkeys" class="project-card">
+          <div class="card-image-wrapper">
+              <Image src={CM} alt="The Crazy Monkeys post-performance photo" width="400" height="250"/>
+          </div>
+          <div class="card-content">
+              <h3>President - The Crazy Monkeys Comedy</h3>
+              <p>Leading a high-impact performance organization at Purdue University.</p>
+              <span class="view-project">View Experience →</span>
+          </div>
+      </a>
 
         <!-- Bechtel Innovation Design center -->
         <a href="/portfolio/BIDC" class="project-card">
@@ -25,7 +38,7 @@ import BIDC from "../../assets/Bechtel_TA.png";
             </div>
         </a>
 
-       <!-- R&D Internship -->
+        <!-- R&D Internship -->
         <a href="/portfolio/R&D_ATI" class="project-card">
             <div class="card-image-wrapper">
                 <Image src={ATI} alt="Ethan at Epic Universe, Benchmarking" width="400" height="250"/>
@@ -37,7 +50,7 @@ import BIDC from "../../assets/Bechtel_TA.png";
             </div>
         </a>
 
-      <!-- Scenic Engineering Internship -->
+        <!-- Scenic Engineering Internship -->
         <a href="/portfolio/ScenicEngineering" class="project-card">
             <div class="card-image-wrapper">
                 <Image src={scenicEngineering} alt="DK Family Hut" width="400" height="250"/>
@@ -102,7 +115,7 @@ import BIDC from "../../assets/Bechtel_TA.png";
   
   .project-gallery {
     margin-top: 2rem;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
   }
   
   .section-title {

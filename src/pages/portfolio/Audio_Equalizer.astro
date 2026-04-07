@@ -1,0 +1,84 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import img1 from '../../assets/Audio_Equalizer.png';
+
+const projectSpecs = [
+  { label: "Location", value: "Purdue University" },
+  { label: "Dates", value: "April 2024" },
+  { label: "Course", value: "ECE 20007 Linear Circuit Analysis Lab" },
+  { label: "Skills", value: "Circuit Analysis, Basic Circuit Design, LT Spice" }
+];
+---
+
+<ProjectLayout 
+    title="Analog Audio Equalizer "
+    subtitle="Coursework in Linear Circuit Analysis"
+    images={[img1]}
+    specs={projectSpecs}>
+
+    <h2>Overview</h2>
+    <p>
+        The final project for this course challenged my knowledge in circuit design and implementation. 
+        The goal: build a functioning analog audio equalizer. 
+    </p> 
+
+    <p>
+        This project utilized analog RC band pass and RCL band reject filters to create the bass, treble, 
+        and mid-range channels, each with -3dB cutoffs. These channels could have their gain controlled by 
+        three potentiometers to achieve the desired mix. Further, a master volume control potentiometer was 
+        added to control the entire device. The equalizer was required to output less than 15 mV(RMS) at 
+        minimum power and near 100 mV(RMS) at maximum power. Additionally, the maximum recombined signal 
+        could not ripple more than 15 mV(RMS) and the entire device needed to output more than 400 mW of 
+        power across all desired frequencies. 
+    </p>
+    <section>
+        <div class="video-frame">
+            <video 
+              controls
+              src="../../Equalizer.mp4"
+              preload="metadata"
+              poster="../../Equalizer_Placeholder.png"
+              class="film-glow"
+              >
+              Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+</ProjectLayout>
+
+
+
+<style is:global>
+    .video-frame {
+        width: 100%;
+        max-width: 800px;
+        margin: 2rem auto;
+        border-radius: 8px;
+        background: #000; /* Mimics the dark theater behind the screen */
+        padding: 10px; /* Creates a small "letterbox" frame */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .video-frame:hover {
+        border-color: var(--accent-orange);
+        box-shadow: 0 0 20px var(--accent-glow);
+    }
+    
+    .project-hero-img {
+        width: 100%;
+        height: 600px;
+    }
+
+    h2 {
+        margin-top: -0.8rem;
+    }
+
+    video.film-glow {
+        width: 100%;
+        display: block;
+        border-radius: 4px;
+        /* Cinematic color grade: slight contrast boost */
+        filter: contrast(1.1) saturate(0.9);
+    }
+</style>

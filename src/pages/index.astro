@@ -8,6 +8,8 @@ import cupcake from '../assets/Mr_Cupcake_Resin_Print.jpg';
 import ATI from "../assets/Ethan_Universal_Headshot.png";
 import scenicEngineering from '../assets/DK_Family_Hut_SNW.png';
 import coasterTrain from '../assets/Coaster_Train_1.png';
+import equalizer from '../assets/Audio_Equalizer.png';
+
 ---
 <BaseLayout>
   <Intro src="/videos/SMPTE Lead In 2.mp4" />
@@ -92,15 +94,19 @@ import coasterTrain from '../assets/Coaster_Train_1.png';
           </div>
         </a>
     
-        <a href="/portfolio/PLACEHOLDER" class="project-card">
-          <div class="card-image-wrapper">
-            <div class="placeholder-img"></div> 
-              <Image src={scenicEngineering} alt="DK Family Hut" width="400" height="250"/>
-            </div>
+        <!-- All Projects -->
+        <a href="/portfolio/projects/" class="project-card">
           <div class="card-content">
-            <h3>Title</h3>
-            <p>Description</p>
-            <span class="view-project">View Project →</span>
+            <h3>All Projects</h3>
+            <span class="view-project">View More Projects →</span>
+          </div>
+        </a>
+
+        <!-- All Experience -->
+        <a href="/portfolio/experience/" class="project-card">
+          <div class="card-content">
+            <h3>All Experience</h3>
+            <span class="view-project">View More Experience →</span>
           </div>
         </a>
     </div>
@@ -157,7 +163,7 @@ import coasterTrain from '../assets/Coaster_Train_1.png';
 
 .project-gallery {
   margin-top: 2rem;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 }
 
 .section-title {
