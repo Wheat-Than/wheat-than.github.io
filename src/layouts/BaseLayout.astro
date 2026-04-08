@@ -3,16 +3,21 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import FilmGrain from '../components/FilmGrain.astro';
+
+const { title } = Astro.props;
+const displayTitle = title ? `Ethan Gray | ${title}` : "Ethan Gray";
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/Icon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />    
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#d7d7d7" media="(prefers-color-scheme: light)" />
+    <title>{displayTitle}</title>  
   </head>
+
   <body>
     <FilmGrain />
     <div id="main-content" class="site-content">
