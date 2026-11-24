@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "ethangray-portfolio",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -9,13 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.0.0",
-    "@astrojs/preact": "^4.0.0",
     "@astrojs/sitemap": "^3.7.0",
     "@vercel/analytics": "^2.0.1",
     "astro": "^5.0.0",
     "sharp": "^0.34.3"
-  },
-  "devDependencies": {
   }
 }
