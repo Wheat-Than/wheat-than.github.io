@@ -1,268 +1,285 @@
 /* --- 1. CORE RESET & BASE --- */
 :root {
-	--accent-orange: #dc5209;
-	--bg-light: #d7d7d7;
-	--bg-dark: #000000;
-	--text-light: #d7d7d7;
-	--text-dark: #000000;
-	--glass-light: rgba(215, 215, 215, 0.9);
-	--glass-dark: rgba(10, 10, 10, 0.95);
-  }
-  
+  --accent-orange: #dc5209;
+  --bg-light: #d7d7d7;
+  --bg-dark: #000000;
+  --text-light: #d7d7d7;
+  --text-dark: #000000;
+  --glass-light: rgba(215, 215, 215, 0.9);
+  --glass-dark: rgba(10, 10, 10, 0.95);
+  --font-mono: 'Courier New', Courier, monospace;
+}
+
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
-  
+
 html {
-	background-color: var(--bg-light);
-	color: var(--text-dark);
-	font-family: Arial, Helvetica, sans-serif;
-	transition: background-color 0.3s ease;
-	/* Hide scrollbar visually while keeping functionality */
-	scrollbar-width: none;
-	-ms-overflow-style: none;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-  
+
 html::-webkit-scrollbar {
-	display: none;
-	width: 0;
-	height: 0;
+  display: none;
+  width: 0;
+  height: 0;
 }
-  
+
 html.dark {
-	background-color: var(--bg-dark);
-	color: var(--text-light);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
 }
-  
+
 body {
-	margin: 0;
-	width: 100%;
-	line-height: 1.5;
-	overflow-x: hidden;
-	-webkit-font-smoothing: antialiased;
+  margin: 0;
+  width: 100%;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
-  
-  /* --- 2. TYPOGRAPHY --- */
+
+/* --- 2. TYPOGRAPHY --- */
 h1, h2, .greeting, .menu {
-	font-family: 'Courier New', Courier, monospace;
-	line-height: 3rem;
+  font-family: var(--font-mono);
+  line-height: 3rem;
 }
-  
+
 h1, .greeting {
-	font-size: 3rem;
-	color: var(--accent-orange);
-	margin: 2.5rem 0 2rem 0;
-	text-align: left;
+  font-size: 3rem;
+  color: var(--accent-orange);
+  margin: 2.5rem 0 2rem 0;
+  text-align: left;
 }
-  
+
 h2 {
-	font-size: 2.5rem;
-	margin: 1rem 0;
-	text-align: left;
-	color: var(--accent-orange);
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  text-align: left;
+  color: var(--accent-orange);
 }
- 
+
+.section-title {
+  font-family: var(--font-mono);
+  color: var(--accent-orange);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
 a {
-	color: inherit;
-	text-decoration: none;
-	transition: color 0.3s ease;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
-  
+
 .dark a {
-	color: var(--text-light);
+  color: var(--text-light);
 }
-  
-  /* --- 3. NAVIGATION & MENU --- */
+
+/* --- 3. NAVIGATION & MENU --- */
 .nav-container {
-	width: 100%;
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 0 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
 }
-  
+
 .menu {
-	background-color: #161616;
-	border: none;
-	color: var(--text-light);
-	font-size: 1.2rem;
-	font-weight: bold;
-	padding: 10px;
-	cursor: pointer;
-	width: 90px;
-	letter-spacing: 1px;
-	border-radius: 8px;
-	z-index: 1001;
+  background-color: #161616;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  width: 90px;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  z-index: 1001;
 }
-  
+
 .dark .menu {
-	background-color: var(--text-light);
-	color: var(--bg-dark);
+  background-color: var(--text-light);
+  color: var(--bg-dark);
 }
-  
+
 .right-group {
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
 }
-  
+
 .nav-links {
-	display: flex;
-	visibility: hidden;
-	opacity: 0;
-	flex-direction: column;
-	align-items: flex-end;
-	position: absolute;
-	top: 100%;
-	right: 0;
-	min-width: 180px;
-    max-width: 90vw;
-	white-space: nowrap;
-	padding: 10px 20px;
-	z-index: 1000;
-	background-color: var(--glass-light);
-	backdrop-filter: blur(50px) saturate(170%);
-	-webkit-backdrop-filter: blur(50px) saturate(170%);
-	border: 1.5px solid rgba(0, 0, 0, 0.1);
-	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-	border-radius: 8px;
-	transform: translateY(-10px);
-	transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 180px;
+  max-width: 90vw;
+  white-space: nowrap;
+  padding: 10px 20px;
+  z-index: 1000;
+  background-color: var(--glass-light);
+  backdrop-filter: blur(50px) saturate(170%);
+  -webkit-backdrop-filter: blur(50px) saturate(170%);
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
 }
-  
+
 html.dark .nav-links {
-	background-color: var(--glass-dark);
-	border: 1.5px solid rgba(215, 215, 215, 0.1);
+  background-color: var(--glass-dark);
+  border: 1.5px solid rgba(215, 215, 215, 0.1);
 }
-  
+
 .right-group:has(.menu[aria-expanded="true"]) .nav-links {
-	visibility: visible;
-	opacity: 1;
-	transform: translateY(10px);
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(10px);
 }
-  
+
 .nav-links a {
-    text-align: center;
-	width: 100%;
-    padding: 10px 0px;
-    margin: 5px 10px;
-    font-size: 1.3rem;
-    font-weight: bolder;
-    text-transform: uppercase;
-    display: block;
-    border-radius: 8px;
-    transition: color 0.3s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 10px;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  display: block;
+  border-radius: 8px;
+  transition: color 0.3s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-    background-color: color-mix(in srgb, var(--accent-orange), transparent 10%); /* Using your variable for pop */
-    color: #000;
-    /* A softer glow feels more 'animated' than a sharp one */
-    box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
+  background-color: color-mix(in srgb, var(--accent-orange), transparent 10%);
+  color: #000;
+  box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
 }
 
 html.dark .nav-links a:hover,
 html.dark .nav-links a:focus {
-    background-color: color-mix(in srgb, var(--accent-orange), transparent 30%); /* Using your variable for pop */
-    color: #fff;
-    box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
-}
- 
-/* --- 4. LAYOUT & COMPONENTS --- */
-#main-content {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 20px;
-}
-  
-.side-margins {
-	width: 100%;
-	max-width: 800px;
-	padding: 0 20px;
-	margin: 0 auto;
-}
-  
-.bio-container {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	align-items: flex-start;
-}
-  
-.view-project {
-	display: inline-block;
-	font-size: 0.85rem;
-	font-weight: bold;
-	color: var(--accent-orange);
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	border-bottom: 1px solid transparent;
-	transition: border-color 0.3s ease;
-}
-  
-.view-project:hover {
-	border-color: var(--accent-orange);
-}
-  
-  /* --- 5. ANIMATIONS --- */
-.film-snap-reveal {
-	animation: light-kick 0.8s ease-out forwards;
-}
-  
-@keyframes light-kick {
-	0% { filter: brightness(0) contrast(150%) blur(5px); transform: scale(1.01); }
-	100% { filter: brightness(1) contrast(100%) blur(0); transform: scale(1); }
-}
-  
-.film-frame-up {
-	opacity: 1 !important;
-	animation: catch-framerate 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-  
-@keyframes catch-framerate {
-	0% { transform: translate3d(0, -12.5vh, 0); filter: blur(8px) brightness(2); }
-	50% { transform: translate3d(0, +5.5vh, 0); filter: blur(8px) brightness(2); }
-	100% { transform: translate3d(0, 0, 0); filter: blur(0) brightness(1); }
-}
-  
-/* --- 6. DESKTOP OVERRIDES --- */
-@media screen and (min-width: 800px) {
-	.menu { display: none; }
-  
-	.nav-links {
-	  position: static;
-	  display: flex !important;
-	  visibility: visible !important;
-	  opacity: 1 !important;
-	  flex-direction: row;
-	  width: auto;
-	  background: none !important;
-	  backdrop-filter: none !important;
-	  border: none !important;
-	  box-shadow: none !important;
-	  transform: none !important;
-	  padding: 0;
-	  gap: 10px;
-	}
-  
-	.nav-links a {
-	  width: auto;
-	  padding: 10px 20px;
-	  font-size: 1.1rem;
-	  margin: 0;
-	}
+  background-color: color-mix(in srgb, var(--accent-orange), transparent 30%);
+  color: #fff;
+  box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
 }
 
-/* Photo Formatting */
+/* --- 4. LAYOUT & SHARED COMPONENTS --- */
+#main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.side-margins {
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.bio-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.view-project {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.view-project:hover {
+  border-color: var(--accent-orange);
+}
+
 .headshot {
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    filter: sepia(0.2) contrast(1.1);
-    display: block; /* Removes the tiny gap browsers put under images */
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  filter: sepia(0.2) contrast(1.1);
+  display: block;
+}
+
+/* --- 5. ANIMATIONS --- */
+.film-snap-reveal {
+  animation: light-kick 0.8s ease-out forwards;
+}
+
+@keyframes light-kick {
+  0% { filter: brightness(0) contrast(150%) blur(5px); transform: scale(1.01); }
+  100% { filter: brightness(1) contrast(100%) blur(0); transform: scale(1); }
+}
+
+.film-frame-up {
+  opacity: 1 !important;
+  animation: catch-framerate 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes catch-framerate {
+  0% { transform: translate3d(0, -12.5vh, 0); filter: blur(8px) brightness(2); }
+  50% { transform: translate3d(0, 5.5vh, 0); filter: blur(8px) brightness(2); }
+  100% { transform: translate3d(0, 0, 0); filter: blur(0) brightness(1); }
+}
+
+/* --- 6. DESKTOP OVERRIDES --- */
+@media screen and (min-width: 800px) {
+  .menu {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex-direction: row;
+    width: auto;
+    background: none !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    padding: 0;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

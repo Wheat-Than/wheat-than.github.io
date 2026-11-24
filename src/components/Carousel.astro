@@ -1,0 +1,80 @@
+---
+interface Props {
+  caption?: string;
+}
+const { caption } = Astro.props;
+---
+
+<div class="media-container">
+  <div class="film-strip-track">
+    <slot />
+  </div>
+  {caption && <p class="film-caption"><span>ID:</span> {caption}</p>}
+</div>
+
+<style>
+  .media-container {
+    width: 100%;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .film-strip-track {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+  }
+
+  .film-strip-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .film-strip-track :global(img),
+  .film-strip-track :global(video) {
+    flex: 0 0 auto;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    scroll-snap-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    filter: sepia(0.1) contrast(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  .film-strip-track:not(:has(:nth-child(2))) {
+    overflow-x: hidden;
+  }
+
+  .film-strip-track:has(:nth-child(2)) :global(img),
+  .film-strip-track:has(:nth-child(2)) :global(video) {
+    width: 90%;
+    cursor: grab;
+  }
+
+  .film-caption {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: var(--accent-orange);
+    text-transform: uppercase;
+  }
+
+  .film-caption span {
+    opacity: 0.5;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.film-strip-track').forEach((track) => {
+    track.addEventListener('click', (e: Event) => {
+      if (track.children.length <= 1) return;
+      const rect = track.getBoundingClientRect();
+      const x = (e as MouseEvent).clientX - rect.left;
+      const offset = x > rect.width / 2 ? rect.width * 0.8 : -rect.width * 0.8;
+      track.scrollBy({ left: offset, behavior: 'smooth' });
+    });
+  });
+</script>

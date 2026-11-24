@@ -1,5 +1,5 @@
 ---
-import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import img1 from "../../assets/Gloria_ATD_1.png";
 import img2 from "../../assets/Gloria_ATD_2.png";
 import img3 from "../../assets/Gloria_ATD_3.png";
@@ -14,12 +14,15 @@ const projectSpecs = [
 ];
 ---
 
-<ProjectLayout 
-    title="Assistant Technical Direction Project"
-    subtitle="Purdue University Department of Theatre and Dance"
-    images={[img1, img2, img3, img4, img5]}
-    specs={projectSpecs}
+<PortfolioDetailLayout
+  type="project"
+  heroHeight="650px"
+  title="Assistant Technical Direction Project"
+  subtitle="Purdue University Department of Theatre and Dance"
+  images={[img1, img2, img3, img4, img5]}
+  specs={projectSpecs}
 >
+
     <h2>Overview</h2>
     <p>
         As an Assistant Technical Director for Purdue, I was assigned to deliver on a specific scenic unit for a 
@@ -28,15 +31,4 @@ const projectSpecs = [
         tasked with creating detailed instructions for load-in install and strike removal from the theatrical 
         space. This exercise was completed in preparation for my senior capstone in the Department of Theatre and Dance. 
     </p> 
-</ProjectLayout>
-
-<style is:global>
-    .project-hero-img {
-        width: 100%;
-        height: 650px;
-    }
-
-    h2 {
-        margin-top: -0.8rem;
-    }
-</style>
+</PortfolioDetailLayout>

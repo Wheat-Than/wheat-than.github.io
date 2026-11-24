@@ -1,5 +1,5 @@
 ---
-import ExperienceLayout from "../../layouts/ExperienceLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import CM from "../../assets/CM_Show_1.png";
 import img2 from "../../assets/CM_Show_2.png";
 import img3 from "../../assets/CM_Show_3.jpg";
@@ -13,12 +13,15 @@ const projectSpecs = [
 ];
 ---
 
-<ExperienceLayout 
-    title="President - The Crazy Monkeys"
-    subtitle="Purdue's Premiere Improv Comedy Troupe"
-    images={[img2, CM, img3, img4]}
-    specs={projectSpecs}
+<PortfolioDetailLayout
+  type="experience"
+  heroHeight="450px"
+  title="President - The Crazy Monkeys"
+  subtitle="Purdue's Premiere Improv Comedy Troupe"
+  images={[img2, CM, img3, img4]}
+  specs={projectSpecs}
 >
+
     <h2>Overview</h2>
     <p>
         The Crazy Monkeys is Purdue's Premiere Improv Comedy Troupe. For over 30 years, The Crazy Monkeys
@@ -38,15 +41,4 @@ const projectSpecs = [
         ensuring we can continue to deliver the premiere image we have come to cultivate. Further, as President of a comedy group, I 
         led twice-weekly practices, planning lessons for members to engage and grow their improv, comedy, and public speaking skills. 
     </p>
-</ExperienceLayout>
-
-<style is:global>
-    .project-hero-img {
-        width: 100%;
-        height: 450px;
-    }
-
-    h2 {
-        margin-top: -0.8rem;
-    }
-</style>
+</PortfolioDetailLayout>

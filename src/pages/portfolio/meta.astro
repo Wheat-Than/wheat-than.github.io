@@ -1,5 +1,5 @@
 ---
-import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import img1 from "../../assets/website_1.png";
 
 const projectSpecs = [
@@ -9,27 +9,20 @@ const projectSpecs = [
 ];
 ---
 
-<ProjectLayout 
-    title="My Portfolio Website"
-    subtitle="Programming a personal website in the Astro Framework"
-    images={[img1]}
-    specs={projectSpecs}
+<PortfolioDetailLayout
+  type="project"
+  heroHeight="650px"
+  title="My Portfolio Website"
+  subtitle="Programming a personal website in the Astro Framework"
+  images={[img1]}
+  specs={projectSpecs}
 >
+
     <h2>Overview</h2>
     <p>
-        This website is fully designed, developed, and deployed by me! I am using the Astro framework, a system
-        designed to easily combine HTML, CSS, JavaScript, Preact, and more into a heavily optimized tool. My site 
-        is deployed through GitHub Pages, and you can visit my GitHub to see my work on this portfolio! 
-    </p> 
-</ProjectLayout>
-
-<style is:global>
-    .project-hero-img {
-        width: 100%;
-        height: 650px;
-    }
-
-    h2 {
-        margin-top: -0.8rem;
-    }
-</style>
+        This website is fully designed, developed, and deployed by me! I am using the Astro framework, 
+        a system designed to easily combine HTML, CSS, JavaScript, Preact, and more into a heavily optimized 
+        tool. My site is deployed through GitHub Pages, and you can visit my GitHub to see my work on this 
+        portfolio!
+    </p>
+</PortfolioDetailLayout>

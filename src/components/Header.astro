@@ -1,52 +1,49 @@
 ---
-import Navigation from "./Navigation.astro";
-import Menu from "./Menu.astro";
-import ThemeIcon from "./ThemeIcon.astro";
+import ThemeIcon from './ThemeIcon.astro';
 ---
 <header>
-    <nav class="nav-container">
-        <a href="/" class="name">Ethan Gray</a>
+  <nav class="nav-container">
+    <a href="/" class="name">Ethan Gray</a>
 
-        <div class="right-group">
-            <Menu /> 
-            <Navigation />
-        </div>
-    </nav>
+    <div class="right-group">
+      <button aria-expanded="false" aria-controls="main-menu" class="menu">
+        MENU
+      </button>
+      <div id="main-menu" class="nav-links">
+        <a href="/portfolio/projects/">Projects</a>
+        <a href="/portfolio/experience/">Experience</a>
+        <a href="/about/">About</a>
+        <ThemeIcon />
+      </div>
+    </div>
+  </nav>
 </header>
 
 <style>
-	header {
-		width: 100%;
-		/* This ensures the header exists in the same center-column as the site */
-		display: flex;
-		justify-content: center; 
-	}
-	
-	.nav-container {
-        display: flex;
-		justify-content: space-between; /* Pushes Name far left, Group far right */
-		align-items: center;
-		width: 100%;
-		max-width: 800px; /* Must match your .side-margins exactly */
-		height: 50px;
-    }
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
-    .name {
-        text-decoration: none;
-		justify-content: left;
-        color: inherit; /* Matches your current text color */
-        font-size: 2.1rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-		font-family: 'Courier New', Courier, monospace;
-		white-space: nowrap;
-    }
+  .name {
+    font-family: var(--font-mono);
+    font-size: 2.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
 
-    .right-group {
-        display: flex;
-        align-items: right;
-        gap: 20px; /* Space between links and the Moon icon */
-		position: relative;
-	}
+  .nav-links {
+    font-family: var(--font-mono);
+  }
 </style>
+
+<script>
+  const menu = document.querySelector('.menu');
+  menu?.addEventListener('click', () => {
+    const isExpanded = menu.getAttribute('aria-expanded') === 'true';
+    menu.setAttribute('aria-expanded', `${!isExpanded}`);
+  });
+</script>

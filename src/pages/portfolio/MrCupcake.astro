@@ -1,9 +1,14 @@
 ---
-import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import img1 from '../../assets/Inspiration_Cupcake.png';
 import img2 from '../../assets/Cupcake_1.png';
 import img3 from '../../assets/Cupcake_2.png';
 import cupcake from '../../assets/Mr_Cupcake_Resin_Print.jpg';
+import cupcake2 from '../../assets/Cupcake3.png';
+import cupcake3 from '../../assets/Cupcake4.png';
+import cupcake4 from '../../assets/Cupcake5.png';
+import MrCupcakeVid from '../../videos/Cupcake_Video.mp4?url';
+
 
 const projectSpecs = [
   { label: "Location", value: "Purdue University" },
@@ -13,11 +18,14 @@ const projectSpecs = [
 ];
 ---
 
-<ProjectLayout 
-    title="Mr. Cupcake Mechatronic Toy Prototype"
-    subtitle="Coursework in Advanced CAD and Design for Rapid Prototyping"
-    images={[img1, img2, img3, cupcake]}
-    specs={projectSpecs}>
+<PortfolioDetailLayout
+  type="project"
+  heroHeight="450px"
+  title="Mr. Cupcake Mechatronic Toy Prototype"
+  subtitle="Coursework in Advanced CAD and Design for Rapid Prototyping"
+  images={[img1, MrCupcakeVid, img2, img3, cupcake, cupcake2, cupcake3, cupcake4]}
+  specs={projectSpecs}
+>
 
     <h2>Overview</h2>
     <p>
@@ -35,15 +43,17 @@ const projectSpecs = [
         Modelled entirely in Creo Parametric, my team utilized motion skeletons and surface modeling to create a virtual prototype. Our physical
         model will employ 3 servos, two DC drive motors, an ESP32 dev board, and a programmable LED to achieve the desired effects. 
     </p>
-</ProjectLayout>
 
-<style is:global>
-    .project-hero-img {
-        width: 100%;
-        height: 450px;
-    }
+    <p>
+        Photos showcase the design and implementation of the eye mechanism, my main focus throughout the project. Additionally, images showcasing
+        major manufacturing steps I took, such as 3D printing the shell, are included. The eye mechanism features eyelids that are 
+        turned outward to achieve a more accurate look. Each eyelid pair (top and bottom) used one servo, causing a unique, flexible solution to be needed
+        in order to drive the eyelids as designed. 
+    </p>
 
-    h2 {
-        margin-top: -0.8rem;
-    }
-</style>
+    <p>
+        Key moments of my work on this project focused on concept and detailed design, iterations, testing, and systems integration. I worked to ensure
+        that my eye mechanism would not only work, but function within the tight constraints inside the frosting head and not interfere with the jaw
+        mechanism. 
+    </p>
+</PortfolioDetailLayout>

@@ -1,5 +1,5 @@
 ---
-import ExperienceLayout from "../../layouts/ExperienceLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import Bechtel from "../../assets/Bechtel_TA_1.png";
 
 const projectSpecs = [
@@ -10,12 +10,15 @@ const projectSpecs = [
 ];
 ---
 
-<ExperienceLayout 
-    title="Peer Mentor - Bechtel Innovation & Design Center"
-    subtitle="Printing and Prototyping Lab"
-    images={[Bechtel]}
-    specs={projectSpecs}
+<PortfolioDetailLayout
+  type="experience"
+  heroHeight="450px"
+  title="Peer Mentor - Bechtel Innovation & Design Center"
+  subtitle="Printing and Prototyping Lab"
+  images={[Bechtel]}
+  specs={projectSpecs}
 >
+
     <h2>Overview</h2>
     <p>
         The Bechtel Innovation and Design Center at Purdue is the campus' largest makerspace, open to
@@ -30,15 +33,5 @@ const projectSpecs = [
         with students to consult on their projects, determining optimal materials or processes, and then
         advising on design constraints and guidelines. 
     </p>
-</ExperienceLayout>
-
-<style is:global>
-    .project-hero-img {
-        width: 100%;
-        height: 450px;
-    }
-
-    h2 {
-        margin-top: -0.8rem;
-    }
-</style>
+    
+</PortfolioDetailLayout>

@@ -1,5 +1,5 @@
 ---
-import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import img1 from "../../assets/Coaster_Train_1.png";
 import img2 from "../../assets/Coaster_Track_1.png";
 import img3 from "../../assets/Coaster_Track_2.png";
@@ -12,12 +12,15 @@ const projectSpecs = [
 ];
 ---
 
-<ProjectLayout 
-    title="3D Printed Roller Coaster"
-    subtitle="Functioning Scale Model with Theme Park Engineering & Design @ Purdue"
-    images={[img1, img2, img3]}
-    specs={projectSpecs}
+<PortfolioDetailLayout
+  type="project"
+  heroHeight="650px"
+  title="3D Printed Roller Coaster"
+  subtitle="Functioning Scale Model with Theme Park Engineering & Design @ Purdue"
+  images={[img1, img2, img3]}
+  specs={projectSpecs}
 >
+
     <h2>Overview</h2>
     <p>
         I began leading a project to design and build a unique, 3D printed model rollercoaster with the Theme Park 
@@ -33,15 +36,4 @@ const projectSpecs = [
         Python in my work, I have successfully test printed a scale model train, track segments, and supports in Selective 
         Laser Sintering (SLS) using Nylon-12. 
     </p>
-</ProjectLayout>
-
-<style is:global>
-    .project-hero-img {
-        width: 100%;
-        height: 650px;
-    }
-
-    h2 {
-        margin-top: -0.8rem;
-    }
-</style>
+</PortfolioDetailLayout>

@@ -1,5 +1,5 @@
 ---
-import ExperienceLayout from "../../layouts/ExperienceLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import ATI from "../../assets/Ethan_Universal_Headshot.png";
 
 const projectSpecs = [
@@ -9,12 +9,15 @@ const projectSpecs = [
 ];
 ---
 
-<ExperienceLayout 
-    title="Research and Development Internship"
-    subtitle="Summer 2025 - Universal Creative Advanced Technology Initiatives"
-    images={[ATI]}
-    specs={projectSpecs}
+<PortfolioDetailLayout
+  type="experience"
+  heroHeight="450px"
+  title="Research and Development Internship"
+  subtitle="Summer 2025 - Universal Creative Advanced Technology Initiatives"
+  images={[ATI]}
+  specs={projectSpecs}
 >
+
     <h2>Overview</h2>
     <p>
         As a Research and Development Intern for Universal Creative ATI, I served on a dynamic team of creative 
@@ -31,15 +34,4 @@ const projectSpecs = [
     </p> 
 
     <!--<p>Due to strict Non-Disclosure Agreements, I am currently unable to provide additional artefacts to showcase my work.</p>-->
-</ExperienceLayout>
-
-<style is:global>
-    .project-hero-img {
-        width: 100%;
-        height: 450px;
-    }
-
-    h2 {
-        margin-top: -0.8rem;
-    }
-</style>
+</PortfolioDetailLayout>

@@ -1,0 +1,167 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Carousel from '../components/Carousel.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  images: any[];
+  specs: { label: string; value: string }[];
+  type: 'project' | 'experience';
+  heroHeight?: string;
+}
+
+const { title, subtitle, images, specs, type, heroHeight = '500px' } = Astro.props;
+const backHref = type === 'project' ? '/portfolio/projects/' : '/portfolio/experience/';
+const backLabel = type === 'project' ? '← Back to Projects' : '← Back to Experience';
+---
+
+<BaseLayout title={title.trim()} mainClass="film-snap-reveal">
+  <section class="project-header">
+    <h1 class="greeting">{title}</h1>
+    <p class="project-subtitle">{subtitle}</p>
+  </section>
+
+  <section class="project-hero-container">
+    <div class="hero-carousel-wrapper" style={`--hero-height: ${heroHeight};`}>
+      <Carousel>
+        {images.map((item) => {
+          const isVideo = typeof item === 'string' || item?.src?.endsWith('.mp4');
+          const src = typeof item === 'string' ? item : item.src;
+
+          return isVideo ? (
+            <video
+              src={src}
+              class="project-hero-img"
+              autoplay
+              muted
+              loop
+              playsinline
+            />
+          ) : (
+            <img
+              src={src}
+              alt={title.trim()}
+              class="project-hero-img"
+              width={item.width}
+              height={item.height}
+            />
+          );
+        })}
+      </Carousel>
+    </div>
+  </section>
+
+  <section class="bio-container project-details">
+    <div class="bio-text">
+      <slot />
+    </div>
+
+    <aside class="project-specs">
+      <div class="spec-box">
+        <h3>Specifications</h3>
+        <ul>
+          {specs.map((spec) => (
+            <li><strong>{spec.label}:</strong> {spec.value}</li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  </section>
+
+  <section class="back-nav">
+    <a href={backHref} class="view-project">{backLabel}</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-carousel-wrapper {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .project-hero-img {
+    width: 100%;
+    height: var(--hero-height);
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .project-header {
+    margin-bottom: 2rem;
+  }
+
+  .project-subtitle {
+    font-family: var(--font-mono);
+    font-weight: bold;
+    color: var(--text-dark);
+    opacity: 0.8;
+    text-transform: uppercase;
+    margin-top: -1rem;
+    line-height: 1;
+  }
+
+  :global(html.dark) .project-subtitle {
+    color: var(--text-light);
+  }
+
+  .bio-text :global(h2) {
+    margin-top: -0.8rem;
+  }
+
+  .project-specs {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    border-radius: 20px;
+    border-left: 4px solid var(--accent-orange);
+    height: fit-content;
+  }
+
+  :global(html.dark) .project-specs {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .spec-box h3 {
+    font-family: var(--font-mono);
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: var(--accent-orange);
+  }
+
+  .spec-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .spec-box li {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .back-nav {
+    margin: 2rem 0 0 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 2rem;
+  }
+
+  @media screen and (min-width: 800px) {
+    .project-details {
+      display: flex;
+      flex-direction: row;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .bio-text {
+      flex: 2;
+    }
+
+    .project-specs {
+      flex: 1;
+      position: sticky;
+      top: 40px;
+    }
+  }
+</style>

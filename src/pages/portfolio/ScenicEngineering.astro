@@ -1,5 +1,5 @@
 ---
-import ExperienceLayout from "../../layouts/ExperienceLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import DK from "../../assets/DK_Family_Hut_SNW.png";
 
 const projectSpecs = [
@@ -9,12 +9,15 @@ const projectSpecs = [
 ];
 ---
 
-<ExperienceLayout 
-    title="Scenic Engineering Internship"
-    subtitle="Fall 2024 - Universal Epic Universe Super Nintendo World"
-    images={[DK]}
-    specs={projectSpecs}
+<PortfolioDetailLayout
+  type="experience"
+  heroHeight="650px"
+  title="Scenic Engineering Internship"
+  subtitle="Fall 2024 - Universal Epic Universe Super Nintendo World"
+  images={[DK]}
+  specs={projectSpecs}
 >
+
     <h2>Overview</h2>
     <p>As a scenic engineer Intern, I worked directly on creating and installing large themed elements in Universal's 
         new Super Nintendo World in Orlando, Florida. I facilitated vendor coordination, ensuring that the show set, 
@@ -23,15 +26,4 @@ const projectSpecs = [
         change orders between the creative team and vendors, documenting and tracking them throughout their lifecycle.</p> 
 
     <p>Donkey Kong's Family Hut, pictured above, was a major scenic and rockwork effort which I helped to coordinate.</p>
-</ExperienceLayout>
-
-<style is:global>
-    .project-hero-img {
-        width: 100%;
-        height: 650px;
-    }
-
-    h2 {
-        margin-top: -0.8rem;
-    }
-</style>
+</PortfolioDetailLayout>

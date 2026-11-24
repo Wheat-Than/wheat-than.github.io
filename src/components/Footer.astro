@@ -1,54 +1,57 @@
 ---
-import Social from "./Social.astro";
+const links = [
+  { label: 'Linkedin', href: 'https://www.linkedin.com/in/ethan-gray-bb024423a', external: true },
+  { label: 'Github', href: 'https://www.github.com/wheat-than', external: true },
+  { label: 'Resume', href: '/Ethan-Gray-Resume.pdf', external: true },
+  { label: 'Contact', href: 'mailto:ethan808080@gmail.com', external: false },
+];
 ---
 <footer>
-	<Social platform = "linkedin" username = "in/ethan-gray-bb024423a"/>
-	<Social platform = "github" username = "wheat-than"/>
-	<a href="/Ethan Gray's Resume.pdf" target="_blank" rel="noopener noreferrer" class="resume">Resume</a>
-    <a href="mailto:ethan808080@gmail.com">Contact</a>
+  {links.map(({ label, href, external }) => (
+    <a
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+    >
+      {label}
+    </a>
+  ))}
 </footer>
 
 <style>
-	footer {
-		display: flex;
-		justify-content: center;
-		gap: 1rem;
-		margin-top: 2rem;
-		margin-bottom: 1rem;
-		padding: 20px;
-        flex-wrap: wrap;
-	}
+  footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 1rem 0;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
 
-	a {
-        padding: 0.5rem 1rem;
-        color: #000; /* Default light mode text */
-        border-radius: 8px;
-        text-decoration: none;
-        font-family: 'Courier New', Courier, monospace;
-        text-transform: capitalize;
-        font-weight: 900;
-        /* Smoothly fades the color and background in/out */
-        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    }
+  a {
+    padding: 0.5rem 1rem;
+    color: var(--text-dark);
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-weight: 900;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
 
-    /* LIGHT MODE HOVER */
-    a:hover, a:focus {
-        background-color: color-mix(in srgb, var(--accent-orange), transparent 10%); /* Using your variable for pop */
-        color: #000;
-        /* A softer glow feels more 'animated' than a sharp one */
-        box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
-    }
+  a:hover,
+  a:focus {
+    background-color: color-mix(in srgb, var(--accent-orange), transparent 10%);
+    color: #000;
+    box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
+  }
 
-    /* DARK MODE BASE */
-    :global(.dark) a {
-        color: #d7d7d7; /* Your light grey text */
-    }
+  :global(.dark) a {
+    color: var(--text-light);
+  }
 
-    /* DARK MODE HOVER */
-    :global(.dark) a:hover, 
-    :global(.dark) a:focus {
-        background-color: color-mix(in srgb, var(--accent-orange), transparent 30%); /* Using your variable for pop */
-        color: #fff;
-        box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
-    }
+  :global(.dark) a:hover,
+  :global(.dark) a:focus {
+    background-color: color-mix(in srgb, var(--accent-orange), transparent 30%);
+    color: #fff;
+    box-shadow: 0 0 30px rgba(220, 82, 9, 0.4);
+  }
 </style>

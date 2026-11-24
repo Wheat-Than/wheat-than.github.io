@@ -1,5 +1,5 @@
 ---
-import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
 import img1 from '../../assets/Audio_Equalizer.png';
 
 const projectSpecs = [
@@ -10,11 +10,14 @@ const projectSpecs = [
 ];
 ---
 
-<ProjectLayout 
-    title="Analog Audio Equalizer "
-    subtitle="Coursework in Linear Circuit Analysis"
-    images={[img1]}
-    specs={projectSpecs}>
+<PortfolioDetailLayout
+  type="project"
+  heroHeight="600px"
+  title="Analog Audio Equalizer"
+  subtitle="Coursework in Linear Circuit Analysis"
+  images={[img1]}
+  specs={projectSpecs}
+>
 
     <h2>Overview</h2>
     <p>
@@ -44,9 +47,7 @@ const projectSpecs = [
             </video>
         </div>
     </section>
-</ProjectLayout>
-
-
+</PortfolioDetailLayout>
 
 <style is:global>
     .video-frame {
@@ -62,16 +63,7 @@ const projectSpecs = [
 
     .video-frame:hover {
         border-color: var(--accent-orange);
-        box-shadow: 0 0 20px var(--accent-glow);
-    }
-    
-    .project-hero-img {
-        width: 100%;
-        height: 600px;
-    }
-
-    h2 {
-        margin-top: -0.8rem;
+        box-shadow: 0 0 20px rgba(220, 82, 9, 0.4);
     }
 
     video.film-glow {

@@ -1,17 +1,12 @@
 ---
-interface Props {
-  src: string;
-}
-const { src } = Astro.props;
-
 import introVideoAsset from '../videos/SMPTE Lead In 2.mp4';
 ---
 
 <div id="intro-overlay" class="intro-overlay">
-  <video 
-    id="intro-video" 
-    src={introVideoAsset} 
-    muted 
+  <video
+    id="intro-video"
+    src={introVideoAsset}
+    muted
     playsinline
     autoplay
   ></video>
@@ -26,7 +21,7 @@ import introVideoAsset from '../videos/SMPTE Lead In 2.mp4';
     height: 100dvh;
     z-index: 9999;
     background: black;
-    display: none; /* Hidden by default, shown via JS */
+    display: none;
     transition: opacity 2s ease-out;
   }
 
@@ -43,45 +38,37 @@ import introVideoAsset from '../videos/SMPTE Lead In 2.mp4';
 </style>
 
 <script>
-    const overlay = document.getElementById('intro-overlay');
-    const video = document.getElementById('intro-video') as HTMLVideoElement;
-    const mainContent = document.getElementById('main-content');
-    const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
-  
-    if (hasSeenIntro) {
-      // REPEAT VISIT: Hide video, show site instantly
-      if (overlay) overlay.style.display = 'none';
-      if (mainContent) {
-        mainContent.style.opacity = '1';
-        mainContent.style.visibility = 'visible';
-      }
-    } else {
-      // FIRST VISIT: Run the cinematic sequence
-      if (video && overlay && mainContent) {
-        overlay.style.display = 'block';
-  
-        // 1. Hand-off logic (When video finishes)
-        video.onended = () => {
-          overlay.style.display = 'none';
-          sessionStorage.setItem('hasSeenIntro', 'true');
-  
-          // Trigger vertical jump physics
-          document.body.classList.add('lock-scroll');
-          mainContent.classList.add('film-frame-up');
-  
-          // Cleanup after 1s animation
-          setTimeout(() => {
-            document.body.classList.remove('lock-scroll');
-            mainContent.style.overflow = 'visible';
-          }, 1000);
-        };
-  
-        // 2. Optional: Subtle fade out just before video ends
-        video.ontimeupdate = () => {
-          if (video.duration - video.currentTime <= 0.2) {
-            overlay.classList.add('fade-out');
-          }
-        };
-      }
+  const overlay = document.getElementById('intro-overlay');
+  const video = document.getElementById('intro-video') as HTMLVideoElement;
+  const mainContent = document.getElementById('main-content');
+  const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
+
+  if (hasSeenIntro) {
+    if (overlay) overlay.style.display = 'none';
+    if (mainContent) {
+      mainContent.style.opacity = '1';
+      mainContent.style.visibility = 'visible';
     }
-  </script>
+  } else if (video && overlay && mainContent) {
+    overlay.style.display = 'block';
+
+    video.onended = () => {
+      overlay.style.display = 'none';
+      sessionStorage.setItem('hasSeenIntro', 'true');
+
+      document.body.classList.add('lock-scroll');
+      mainContent.classList.add('film-frame-up');
+
+      setTimeout(() => {
+        document.body.classList.remove('lock-scroll');
+        mainContent.style.overflow = 'visible';
+      }, 1000);
+    };
+
+    video.ontimeupdate = () => {
+      if (video.duration - video.currentTime <= 0.2) {
+        overlay.classList.add('fade-out');
+      }
+    };
+  }
+</script>

@@ -1,38 +1,50 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/global.css';
 import FilmGrain from '../components/FilmGrain.astro';
-import Analytics from '@vercel/analytics/astro'
+import Analytics from '@vercel/analytics/astro';
+import '../styles/global.css';
 
-const { title } = Astro.props;
-const displayTitle = title ? `Ethan Gray | ${title}` : "Ethan Gray";
+interface Props {
+  title?: string;
+  mainClass?: string;
+}
+
+const { title, mainClass = '' } = Astro.props;
+const displayTitle = title ? `Ethan Gray | ${title}` : 'Ethan Gray';
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/Icon.png"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />    
+    <link rel="icon" href="/Icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#d7d7d7" media="(prefers-color-scheme: light)" />
-    <title>{displayTitle}</title>  
+    <title>{displayTitle}</title>
+    <Analytics />
+
+    <script is:inline>
+      (() => {
+        const saved = localStorage?.getItem('theme') ?? '';
+        const theme = ['dark', 'light'].includes(saved)
+          ? saved
+          : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        localStorage?.setItem('theme', theme);
+      })();
+    </script>
   </head>
-  </Analytics>
+
   <body>
     <FilmGrain />
     <div id="main-content" class="site-content">
       <div class="side-margins">
         <Header />
-      
-        <main>
+        <main class={mainClass}>
           <slot />
         </main>
-        
         <Footer />
-        <script>
-          import "../scripts/menu.js";
-        </script>
       </div>
     </div>
   </body>

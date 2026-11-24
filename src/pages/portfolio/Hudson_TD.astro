@@ -1,0 +1,46 @@
+---
+import PortfolioDetailLayout from "../../layouts/PortfolioDetailLayout.astro";
+import Hamilton from "../../assets/Ethan_Hamilton.png";
+import Apple from "../../assets/Apple_Lounge.png";
+import Rhino from "../../assets/Rhino_Door_Drawing.png";
+
+const projectSpecs = [
+  { label: "Location", value: "Hudson Scenic Studios" },
+  { label: "Dates", value: "May 2026 - Aug. 2026" },
+  { label: "Title", value: "Technical Design Intern" },
+  { label: "Skills", value: "Inventor, AutoCAD, Design for Manufacturing and Assembly, Drafting, Visual and Written Communication"}
+];
+---
+
+<PortfolioDetailLayout
+  type="experience"
+  heroHeight="1000px"
+  title="Technical Design Internship"
+  subtitle="Summer 2026 - Hudson Scenic Studios"
+  images={[Hamilton]}
+  specs={projectSpecs}
+>
+
+    <h2>Overview</h2>
+    <p>
+        At Hudson Scenic Studios, I worked alongside a team of technical designers to bring the creative vision of a show to life through 
+        a rigorous design process. As an intern on the team, I interpreted designer drawing packages, developed a plan for each scenic element
+        in line with labor, cost, and material limitations, and then crafted comprehensive shop drawings for manufacturing. Utilizing Inventor 
+        and AutoCAD, I iterated through initial and detailed designs. For each design, I met with shop leaders and engineering for design reviews,
+        justifying design choices and analyzing expected construction processes. Through this experience, I gained skills in design for manufacture
+        and assembly, 3D modelling, drafting, and visual communication.
+    </p> 
+
+    <p>
+        Projects I worked on include <i>Rhinoceros</i> at Harvard American Repertory Theater, The Tonight Show starring Jimmy Fallon, 
+        <i>Romeo and Juliet</i> at the New York City Ballet, an upcoming show with Apple TV, and a yet-to-be-announced project with Netflix House. In addition, I worked heavily
+        on updating internal technical design standards to be in line with the most rigorous in the entertainment industry. I verified
+        CAD processes relied on the correct fastener standards and types, updating and filling gaps where necessary, to ensure
+        proper downstream communication and documentation. 
+    </p>
+
+    <p>
+        Please contact me for drawing package samples.
+    </p>
+
+</PortfolioDetailLayout>
